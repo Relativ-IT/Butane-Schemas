@@ -12,21 +12,20 @@ ignition:
           - name: User-Agent
             value: Mozilla/5.0 (compatible; MSIE 6.0; Windows NT 5.1)
         verification:
-          hash: sha256-702d8a08044b106d73a1ff8f1636e3d5bc1f9bed5afb99981ec5f97c4a66
-      - inline : "sdmjhpmo"
-      - local: ./merge/fah.ign
+          hash: sha256-702d8a08044b106d73a1ff8f1636e3b410d5bc1f9bed5afb99981ec5f97c4a66
+      - inline : |
+          "some inline config
+          on multiple lines"
 
     replace:
-      - inline : "sdmjhpmo"
-      - local: ./merge/fah.ign
-      - source: "http://xxxxxx"
-        http_headers: 
-          - name: Authorization
-            value: Basic YWxhZGRpbjpvcGVuc2VzYW1l
-          - name: User-Agent
-            value: Mozilla/5.0 (compatible; MSIE 6.0; Windows NT 5.1)
-        verification:
-          hash: sha256-702d8a08044b106d73a1ff8f1636e3b41f9bed5afb99981ec5f97c4a66
+      source: "https://example.com/replacement.ign"
+      http_headers: 
+        - name: Authorization
+          value: Basic YWxhZGRpbjpvcGVuc2VzYW1l
+        - name: User-Agent
+          value: Mozilla/5.0 (compatible; MSIE 6.0; Windows NT 5.1)
+      verification:
+        hash: sha256-702d8a08044b106d73a1ff8f1636e3b410d5bc1f9bed5afb99981ec5f97c4a66
 
   timeouts: 
     http_response_headers : 10
@@ -39,7 +38,6 @@ ignition:
           verification:
             hash: sha256-702d8a08044b106d73a1ff8f1636e3b410d5bc1f9bed5afb99981ec5f97c4a66
         - inline: PEM
-        - local: fqmodjfqf
 
   proxy:
     http_proxy: "http://proxy"
@@ -145,7 +143,7 @@ storage:
 
   trees:
     - local: tree
-      path: /etc/files
+      path: ./
 
 passwd:
   users:
