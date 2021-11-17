@@ -13,6 +13,7 @@
     "config": {
       "oneOf": [
         {
+          "$id": "#/definitions/config",
           "type": "object",
           "additionalProperties": false,
           "properties": {
@@ -82,8 +83,7 @@
           {
             "additionalProperties": false,
             "required": [
-              "name",
-              "value"
+              "name"
             ],
             "properties": {
               "name": {
@@ -210,6 +210,7 @@
       "items": {
         "oneOf": [
           {
+            "required": ["url","thumbprint"],
             "additionalProperties": false,
             "properties": {
               "url": {
@@ -413,6 +414,7 @@
           "items": {
             "oneOf": [
               {
+                "required": ["device"],
                 "additionalProperties": false,
                 "properties": {
                   "device": {
@@ -505,6 +507,7 @@
           "items": {
             "oneOf": [
               {
+                "required": ["name","level","devices"],
                 "additionalProperties": false,
                 "properties": {
                   "name": {
@@ -552,11 +555,8 @@
           "items": {
             "oneOf": [
               {
+                "required": ["device","format"],
                 "additionalProperties": false,
-                "required": [
-                  "device",
-                  "format"
-                ],
                 "properties": {
                   "device": {
                     "type": "string",
@@ -567,14 +567,7 @@
                     "type": "string",
                     "title": "format (string):",
                     "description": "The filesystem format (ext4, btrfs, xfs, vfat, swap, or none).",
-                    "enum": [
-                      "ext4",
-                      "btrfs",
-                      "xfs",
-                      "vfat",
-                      "swap",
-                      "none"
-                    ]
+                    "enum": ["ext4","btrfs","xfs","vfat","swap","none"]
                   },
                   "path": {
                     "type": "string",
@@ -625,6 +618,7 @@
           "items": {
             "oneOf": [
               {
+                "required": ["path"],
                 "additionalProperties": false,
                 "properties": {
                   "path": {
@@ -679,6 +673,7 @@
           "items": {
             "oneOf": [
               {
+                "required": ["path"],
                 "additionalProperties": false,
                 "properties": {
                   "path": {
@@ -715,6 +710,7 @@
           "items": {
             "oneOf": [
               {
+                "required": ["path"],
                 "additionalProperties": false,
                 "properties": {
                   "path": {
@@ -761,6 +757,7 @@
           "items": {
             "oneOf": [
               {
+                "required": ["name","device"],
                 "additionalProperties": false,
                 "properties": {
                   "name": {
@@ -822,6 +819,7 @@
                         "type": "object",
                         "title": "clevis (object):",
                         "description": "Overrides the clevis configuration. The pin & config will be passed directly to clevis luks bind. If specified, all other clevis options must be omitted.",
+                        "required": ["pin","config"],
                         "additionalProperties": false,
                         "properties": {
                           "pin": {
@@ -856,6 +854,7 @@
           "items": {
             "oneOf": [
               {
+                "required": ["local"],
                 "additionalProperties": false,
                 "properties": {
                   "local": {
@@ -890,6 +889,7 @@
           "items": {
             "oneOf": [
               {
+                "required": ["name"],
                 "additionalProperties": false,
                 "properties": {
                   "name": {
@@ -912,20 +912,22 @@
                     "title": "contents (string):",
                     "description": "The contents of the unit."
                   },
-                  "trees": {
+                  "dropins": {
                     "type": "array",
-                    "title": "trees (list of objects):",
-                    "description": "A list of local directory trees to be embedded in the config. Ownership is not preserved. File modes are set to 0755 if the local file is executable or 0644 otherwise. Attributes of files, directories, and symlinks can be overridden by creating a corresponding entry in the files, directories, or links section; such files entries must omit contents and such links entries must omit target.",
+                    "title": "dropins (list of objects):",
+                    "description": "The list of drop-ins for the unit. Every drop-in must have a unique name.",
                     "additionalItems": false,
                     "items": {
                       "oneOf": [
                         {
+                          "required": ["name"],
                           "additionalProperties": false,
                           "properties": {
-                            "dropins": {
+                            "name": {
                               "type": "string",
-                              "title": "dropins (list of objects):",
-                              "description": "The list of drop-ins for the unit. Every drop-in must have a unique name."
+                              "title": "name (string):",
+                              "description": "The name of the drop-in. This must be suffixed with '.conf'.",
+                              "pattern": ".conf$"
                             },
                             "contents": {
                               "type": "string",
@@ -959,6 +961,7 @@
           "items": {
             "oneOf": [
               {
+                "required": ["name"],
                 "additionalProperties": false,
                 "properties": {
                   "name": {
@@ -1039,6 +1042,7 @@
           "items": {
             "oneOf": [
               {
+                "required": ["name"],
                 "additionalProperties": false,
                 "properties": {
                   "name": {

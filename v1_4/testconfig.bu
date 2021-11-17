@@ -142,8 +142,7 @@ storage:
             thumbprint: REPLACE-THIS-WITH-YOUR-TANG-THUMBPRINT
 
   trees:
-    - local: tree
-      path: ./
+    - local: v1_4
 
 passwd:
   users:
@@ -157,6 +156,30 @@ passwd:
         - wheel
         - plugdev
       shell: /bin/bash
+
+systemd:
+  units:
+    - name: exporter.service
+      enabled: true
+      dropins:
+      - name: dropin.conf
+        contents: some string
+      contents: |
+        [Unit]
+        Description=Prometheus node exporter
+        After=network-online.target
+        Wants=network-online.target
+
+        [Service]
+        Environment=PODMAN_SYSTEMD_UNIT=%n
+        #ExecStartPre=/usr/bin/podman pull quay.io/prometheus/node-exporter:latest
+        ExecStart=/usr/bin/podman run --label="io.containers.autoupdate=image" --detach --replace --name=%N --privileged --network=host --pid=host -v /run/dbus/system_bus_socket:/var/run/dbus/system_bus_socket:ro -v /:/host:ro,rslave quay.io/prometheus/node-exporter:latest --path.rootfs=/host --collector.systemd
+        ExecStop=/usr/bin/podman stop %N
+        Type=forking
+
+        [Install]
+        WantedBy=multi-user.target
+
 
 kernel_arguments:
   should_exist:
