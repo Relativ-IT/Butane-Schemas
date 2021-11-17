@@ -347,6 +347,10 @@
                       },
                       {
                         "additionalProperties": false,
+<<<<<<< HEAD
+=======
+                        "required": ["local"],
+>>>>>>> 7bab75e (typo)
                         "properties": {
                           "local": {
                             "type": "string",
