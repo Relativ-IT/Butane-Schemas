@@ -12,3 +12,20 @@ I won't describe all possibilities but the one I use :
   - Install the [Red hat YAML extension](https://github.com/redhat-developer/vscode-yaml)
   - Associate a schema in the YAML file `# yaml-language-server: $schema=<urlToTheSchema>`
     - for release 1.0.0 : `# yaml-language-server: $schema=https://github.com/Nemric/Butane-Schemas/releases/download/v1.0.0/butane-v1_4_0.json`
+    - for latest release, use `# yaml-language-server: $schema=https://github.com/Nemric/Butane-Schemas/releases/latest/download/butane-v1_4_0.json"` instead
+
+## How to setup vs code to associate a schema to your *.bu files
+
+  - edit your settings.json file like :
+```
+"settings": {
+  "yaml.schemas": {
+      "https://github.com/Nemric/Butane-Schemas/releases/latest/download/butane-v1_4_0.json": ["*.bu"]
+  },
+  "files.associations": {
+    "*.bu": "yaml",
+    "*.ign": "json"
+  }
+}
+```
+   
