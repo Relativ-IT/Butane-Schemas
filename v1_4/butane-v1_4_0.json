@@ -347,10 +347,6 @@
                       },
                       {
                         "additionalProperties": false,
-<<<<<<< HEAD
-=======
-                        "required": ["local"],
->>>>>>> 7bab75e (typo)
                         "properties": {
                           "local": {
                             "type": "string",
@@ -637,7 +633,7 @@
                     "description": "list of contents to be appended to the file. Follows the same stucture as contents",
                     "additionalItems": false,
                     "uniqueItems": true,
-"minItems": 1,
+                    "minItems": 1,
                     "items": {
                       "oneOf": [
                         {
@@ -668,7 +664,7 @@
           "description": "The list of directories to be created. Every file, directory, and link must have a unique path.",
           "additionalItems": false,
           "uniqueItems": true,
-"minItems": 1,
+          "minItems": 1,
           "items": {
             "oneOf": [
               {
@@ -707,7 +703,7 @@
           "description": "The list of filesystems to be configured. device and format need to be specified. Every filesystem must have a unique device.",
           "additionalItems": false,
           "uniqueItems": true,
-"minItems": 1,
+          "minItems": 1,
           "items": {
             "oneOf": [
               {
@@ -756,7 +752,7 @@
           "description": "The list of files to be written. Every file, directory and link must have a unique path.",
           "additionalItems": false,
           "uniqueItems": true,
-"minItems": 1,
+          "minItems": 1,
           "items": {
             "oneOf": [
               {
@@ -855,7 +851,7 @@
           "description": "A list of local directory trees to be embedded in the config. Ownership is not preserved. File modes are set to 0755 if the local file is executable or 0644 otherwise. Attributes of files, directories, and symlinks can be overridden by creating a corresponding entry in the files, directories, or links section; such files entries must omit contents and such links entries must omit target.",
           "additionalItems": false,
           "uniqueItems": true,
-"minItems": 1,
+          "minItems": 1, 
           "items": {
             "oneOf": [
               {
@@ -892,7 +888,7 @@
           "description": "The list of systemd units. Every unit must have a unique name.",
           "additionalItems": false,
           "uniqueItems": true,
-"minItems": 1,
+          "minItems": 1,
           "items": {
             "oneOf": [
               {
@@ -925,7 +921,7 @@
                     "description": "The list of drop-ins for the unit. Every drop-in must have a unique name.",
                     "additionalItems": false,
                     "uniqueItems": true,
-"minItems": 1,
+                    "minItems": 1,
                     "items": {
                       "oneOf": [
                         {
@@ -968,7 +964,7 @@
           "description": "The list of accounts that shall exist. All users must have a unique name.",
           "additionalItems": false,
           "uniqueItems": true,
-          "minItems": 1,
+        "minItems": 1,
           "items": {
             "oneOf": [
               {
