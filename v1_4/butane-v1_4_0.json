@@ -964,7 +964,7 @@
           "description": "The list of accounts that shall exist. All users must have a unique name.",
           "additionalItems": false,
           "uniqueItems": true,
-"minItems": 1,
+          "minItems": 1,
           "items": {
             "oneOf": [
               {
