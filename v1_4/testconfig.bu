@@ -153,7 +153,7 @@ passwd:
   users:
     - name: user1
       ssh_authorized_keys:
-        - key1
+        - ssh-rsa AAAAB3NzaC1yc2andmore
       password_hash: $y$j9T$aUmgEDoFIDPhGxEe2FUjc/$C5A...
       home_dir: /home/user1
       no_create_home: true
