@@ -6,15 +6,17 @@
   "description": "Schema to validate v1.4 specifications",
   "additionalProperties": false,
   "required": ["variant","version"],
+
   "definitions": {
     "config": {
+      "$id": "#/definitions/config",
       "oneOf": [
         {
-          "$id": "#/definitions/config",
           "type": "object",
           "additionalProperties": false,
           "properties": {
             "source": {
+              "$ref": "#/definitions/patterns/source_pattern",
               "type": "string",
               "title": "source (string):",
               "description": "The URL of the config. Supported schemes are http, https, s3, tftp, and data. Note: When using http, it is advisable to use the verification option to ensure the contents haven’t been modified. Mutually exclusive with inline and local."
@@ -96,9 +98,15 @@
         ]
       }
     },
-    "guid_pattern": {
-      "$id": "#/definitions/guid_pattern",
-      "pattern": "^[{]?[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}[}]?$"
+    "patterns":{
+      "source_pattern": {
+        "$id": "#/definitions/patterns/source_pattern",
+        "pattern": "^((tftp|http|https|s3):\/\/|data:)[^ \"]+$"
+      },
+      "guid_pattern": {
+        "$id": "#/definitions/patterns/guid_pattern",
+        "pattern": "^[{]?[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}[}]?$"
+      }
     },
     "stringoptions": {
       "$id": "#/definitions/stringoptions",
@@ -123,14 +131,12 @@
           "type": "string",
           "title": "compression (string):",
           "description": "The type of compression used on the contents (null or gzip). Compression cannot be used with S3.",
-          "enum": [
-            "null",
-            "gzip"
-          ]
+          "enum": ["null","gzip"]
         },
         "source": {
+          "$ref": "#/definitions/patterns/source_pattern",
           "type": "string",
-          "title": "source (string):fqerg",
+          "title": "source (string):",
           "description": "The URL of the contents. Supported schemes are http, https, s3, tftp, and data. Note: When using http, it is advisable to use the verification option to ensure the contents haven’t been modified. Mutually exclusive with inline and local."
         },
         "http_headers": {
@@ -235,9 +241,7 @@
       "type": "string",
       "title": "variant (string):",
       "description": "Used to differentiate configs for different operating systems. Must be fcos for this specification.",
-      "enum": [
-        "fcos"
-      ],
+      "enum": ["fcos"],
       "default": "fcos"
     },
     "version": {
@@ -245,6 +249,7 @@
       "type": "string",
       "title": "version (string):",
       "description": "The semantic version of the spec for this document. This document is for version 1.4.0 and generates Ignition configs with version 3.3.0.",
+      "enum": ["1.4.0"],
       "default": "1.4.0"
     },
     "ignition": {
@@ -323,6 +328,7 @@
                         "additionalProperties": false,
                         "properties": {
                           "source": {
+                            "$ref": "#/definitions/patterns/source_pattern",
                             "type": "string",
                             "title": "source (string):",
                             "description": "The URL of the certificate bundle (in PEM format). With Ignition ≥ 2.4.0, the bundle can contain multiple concatenated certificates. Supported schemes are http, https, s3, tftp, and data. Note: When using http, it is advisable to use the verification option to ensure the contents haven’t been modified. Mutually exclusive with inline and local."
@@ -454,14 +460,14 @@
                               "default": 0
                             },
                             "type_guid": {
-                              "$ref": "#/definitions/guid_pattern",
+                              "$ref": "#/definitions/patterns/guid_pattern",
                               "type": "string",
                               "title": "type_guid (string):",
                               "description": "The GPT partition type GUID. If omitted, the default will be 0FC63DAF-8483-4772-8E79-3D69D8477DE4 (Linux filesystem data).",
                               "default": "0FC63DAF-8483-4772-8E79-3D69D8477DE4"
                             },
                             "guid": {
-                              "$ref": "#/definitions/guid_pattern",
+                              "$ref": "#/definitions/patterns/guid_pattern",
                               "type": "string",
                               "title": "guid (string):",
                               "description": "The GPT unique partition GUID."
@@ -574,7 +580,8 @@
                     "description": "The label of the filesystem."
                   },
                   "uuid": {
-                    "$ref": "#/definitions/guid_pattern",
+                    "$ref": "#/definitions/patterns/guid_pattern",
+                    "format": "uuid",
                     "type": "string",
                     "title": "uuid (string):",
                     "description": "The uuid of the filesystem."
@@ -780,7 +787,7 @@
                     "description": "The label of the luks device."
                   },
                   "uuid": {
-                    "$ref": "#/definitions/guid_pattern",
+                    "$ref": "#/definitions/patterns/guid_pattern",
                     "type": "string",
                     "title": "uuid (string):",
                     "description": "The uuid of the luks device."
