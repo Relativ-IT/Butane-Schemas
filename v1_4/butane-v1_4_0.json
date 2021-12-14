@@ -948,8 +948,7 @@
                               "$ref": "#/definitions/patterns/dropin_name",
                               "type": "string",
                               "title": "name (string):",
-                              "description": "The name of the drop-in. This must be suffixed with '.conf'.",
-                              "pattern": ".conf$"
+                              "description": "The name of the drop-in. This must be suffixed with '.conf'."
                             },
                             "contents": {
                               "type": "string",
