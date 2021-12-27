@@ -101,7 +101,7 @@
     "patterns":{
       "source_pattern": {
         "$id": "#/definitions/patterns/source_pattern",
-        "pattern": "^((tftp|http|https|s3):\/\/|data:)[^ \"]+$"
+        "pattern": "^((tftp|http|https|s3|gs):\/\/|data:)[^ \"]+$"
       },
       "guid_pattern": {
         "$id": "#/definitions/patterns/guid_pattern",
