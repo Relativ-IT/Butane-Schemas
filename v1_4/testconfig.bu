@@ -76,7 +76,7 @@ storage:
 
   raid:
     - name: Raid
-      level: raid1
+      level: mirror
       devices:
         - /dev/disk/by-id/ata-WDC_WD10SPZX-80Z10T2_WD-WX41A49H9FT4
         - /dev/disk/by-id/ata-WDC_WD10SPZX-80Z10T2_WD-WXL1A49KPYFD

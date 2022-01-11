@@ -526,7 +526,8 @@
                   "level": {
                     "type": "string",
                     "title": "level (string):",
-                    "description": "The redundancy level of the array (e.g. linear, raid1, raid5, etc.)."
+                    "description": "The redundancy level of the array (e.g. linear, raid1, raid5, etc.).",
+                    "enum": ["linear","raid0","0","stripe","raid1","1","mirror","raid4","4","raid5","5","raid6","6","raid10","10"]
                   },
                   "devices": {
                     "$ref": "#/definitions/stringoptions",
