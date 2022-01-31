@@ -1063,7 +1063,7 @@
                   "should_exist": {
                     "type":"boolean",
                     "title": "should_exist (boolean)",
-                    "description": "whether or not the user with the specified name should exist. If omitted, it defaults to true. If false, then Ignition will delete the specified user."
+                    "description": "Whether or not the user with the specified name should exist. If omitted, it defaults to true. If false, then Ignition will delete the specified user."
                   }
                 }
               }
@@ -1101,12 +1101,12 @@
                   "system": {
                     "type": "boolean",
                     "title": "system (boolean):",
-                    "description": "whether or not the group should be a system group. This only has an effect if the group doesn’t exist yet."
+                    "description": "Whether or not the group should be a system group. This only has an effect if the group doesn’t exist yet."
                   },
                   "should_exist": {
                     "type":"boolean",
                     "title": "should_exist (boolean)",
-                    "description": "whether or not the group with the specified name should exist. If omitted, it defaults to true. If false, then Ignition will delete the specified group."
+                    "description": "Whether or not the group with the specified name should exist. If omitted, it defaults to true. If false, then Ignition will delete the specified group."
                   }
                 }
               }
