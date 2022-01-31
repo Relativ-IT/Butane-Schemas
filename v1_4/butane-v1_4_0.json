@@ -65,7 +65,7 @@
           "type": "string",
           "title": "hash (string):",
           "description": "The hash in the form type-value where type is either sha512 or sha256.",
-          "pattern": "sha256-*|sha512-*"
+          "pattern": "^(sha256-|sha512-)\\S+$"
         }
       }
     },
@@ -867,7 +867,7 @@
           "description": "A list of local directory trees to be embedded in the config. Ownership is not preserved. File modes are set to 0755 if the local file is executable or 0644 otherwise. Attributes of files, directories, and symlinks can be overridden by creating a corresponding entry in the files, directories, or links section; such files entries must omit contents and such links entries must omit target.",
           "additionalItems": false,
           "uniqueItems": true,
-          "minItems": 1, 
+          "minItems": 1,
           "items": {
             "oneOf": [
               {
@@ -1057,8 +1057,13 @@
                   },
                   "system": {
                     "type": "boolean",
-                    "title": "system (bool):",
+                    "title": "system (boolean):",
                     "description": "Whether or not this account should be a system account. This only has an effect if the account doesn’t exist yet."
+                  },
+                  "should_exist": {
+                    "type":"boolean",
+                    "title": "should_exist (boolean)",
+                    "description": "whether or not the user with the specified name should exist. If omitted, it defaults to true. If false, then Ignition will delete the specified user."
                   }
                 }
               }
@@ -1095,8 +1100,13 @@
                   },
                   "system": {
                     "type": "boolean",
-                    "title": "system (bool):",
+                    "title": "system (boolean):",
                     "description": "whether or not the group should be a system group. This only has an effect if the group doesn’t exist yet."
+                  },
+                  "should_exist": {
+                    "type":"boolean",
+                    "title": "should_exist (boolean)",
+                    "description": "whether or not the group with the specified name should exist. If omitted, it defaults to true. If false, then Ignition will delete the specified group."
                   }
                 }
               }
