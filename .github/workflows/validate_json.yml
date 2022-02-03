@@ -1,0 +1,13 @@
+name: Validate JSON
+
+on: [push]
+
+jobs:
+  verify-json-validation:
+    runs-on:  ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Validate all json files using their own $schema properties
+        uses: cardinalby/schema-validator-action@v1
+        with:
+          file: 'v1_4/*.json'
