@@ -1116,7 +1116,7 @@
       }
     },
     "kernel_arguments": {
-      "$id": "#/properties/passwd",
+      "$id": "#/properties/kernel_arguments",
       "type": "object",
       "title": "kernel_arguments (object):",
       "description": "Describes the desired kernel arguments.",
