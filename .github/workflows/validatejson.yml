@@ -10,4 +10,4 @@ jobs:
       - name: Validate all json files using their own $schema properties
         uses: cardinalby/schema-validator-action@v1
         with:
-          file: 'dir/*.json'
+          file: '/v1_4/*.json'
