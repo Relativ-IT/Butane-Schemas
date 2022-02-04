@@ -3,7 +3,7 @@ name: Validate Changes
 on:
   push:
     paths:
-      - 'v1_4/**'
+      - 'v*/**'
 
 jobs:
   verify-json-validation:
