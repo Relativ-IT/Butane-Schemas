@@ -6,7 +6,7 @@ ignition:
   config:
     merge:
       - source: https://example.com/etc/hosts
-        http_headers: 
+        http_headers:
           - name: Authorization
             value: Basic YWxhZGRpbjpvcGVuc2VzYW1l
           - name: User-Agent
@@ -19,7 +19,7 @@ ignition:
 
     replace:
       source: "https://example.com/replacement.ign"
-      http_headers: 
+      http_headers:
         - name: Authorization
           value: Basic YWxhZGRpbjpvcGVuc2VzYW1l
         - name: User-Agent
@@ -27,15 +27,15 @@ ignition:
       verification:
         hash: sha256-702d8a08044b106d73a1ff8f1636e3b410d5bc1f9bed5afb99981ec5f97c4a66
 
-  timeouts: 
+  timeouts:
     http_response_headers : 10
     http_total : 0
-  
+
   security:
     tls:
       certificate_authorities :
         - source: http://www.cacert.org/certs/root_X0F.crt
-          http_headers: 
+          http_headers:
             - name: Authorization
               value: Basic YWxhZGRpbjpvcGVuc2VzYW1l
             - name: User-Agent
@@ -62,7 +62,7 @@ storage:
       resize: true
     - size_mib: 0
       label: Var
-  - device: /dev/sdb 
+  - device: /dev/sdb
     wipe_table: true
     partitions:
       - number: 2
@@ -85,7 +85,7 @@ storage:
         - --assume-clean
         - --uuid=7ec8d4df:823fae52:c55d5e56:e773b281
 
-  filesystems: 
+  filesystems:
     - path: /var
       device: /dev/md/Raid
       format: xfs
