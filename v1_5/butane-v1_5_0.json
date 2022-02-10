@@ -1,63 +1,63 @@
 {
-	"$schema": "http://json-schema.org/draft-07/schema",
-	"$id": "https://github.com/Nemric/Butane-Schemas/releases/latest/download/butane-v1_5_0.json",
-	"$ref": "https://github.com/Nemric/Butane-Schemas/releases/latest/download/butane-v1_4_0.json",
-	"type": "object",
-	"title": "Fedora Coreos Butane Schema",
-	"description": "Schema to validate v1.5 specifications",
-	"required": ["variant",	"version"],
-	"properties": {
-		"variant": {
-			"$ref": "#/properties/variant"
-		},
-		"version": {
-			"$ref": "#/properties/version",
-			"description": "The semantic version of the spec for this document. This document is for version 1.5.0 and generates Ignition configs with version 3.4.0.",
-			"enum": ["1.5.0"],
-			"default": "1.5.0"
-		},
-		"ignition": {
-			"$ref": "#/properties/ignition"
-		},
-		"storage": {
-			"$ref": "#/properties/storage"
-		},
-		"passwd": {
-			"$ref": "#/properties/passwd"
-		},
-		"systemd": {
-			"$ref": "#/properties/systemd",
-			"properties": {
-				"units": {
-					"items": {
-						"oneOf": [
-							{
-								"$ref": "#/properties/systemd/properties/units/items/oneOf/0/properties",
-								"properties": {
-									"scope": {
-										"type": "string",
-										"title": "scope (string):",
-										"description": "Allow to define \"user\", \"global\" or \"system\" (default) level systemd units. cf : [systemd Documentation](https://www.freedesktop.org/software/systemd/man/systemctl.html#enable%20UNIT%E2%80%A6)",
-										"enum": ["system", "global", "user"],
-										"default": "system"
-									},
-									"users": {
-										"$ref": "#/definitions/stringoptions",
-										"title": "users (list of strings):",
-										"description": "The list of users concerned by the unit if scope is set to \"user\"."
-									}
-								}
-							}
-						]
-					}
-				}
-			}
-		},
-		"kernel_arguments": {
-			"$ref": "#/properties/kernel_arguments"
-		},
-		"boot_device": {
-			"$ref": "#/properties/boot_device"
-		}
-	}
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://github.com/Nemric/Butane-Schemas/releases/latest/download/butane-v1_5_0.json",
+  "$ref": "https://github.com/Nemric/Butane-Schemas/releases/latest/download/butane-v1_4_0.json",
+  "type": "object",
+  "title": "Fedora Coreos Butane Schema",
+  "description": "Schema to validate v1.5 specifications",
+  "required": ["variant",	"version"],
+  "properties": {
+    "variant": {
+      "$ref": "#/properties/variant"
+    },
+    "version": {
+      "$ref": "#/properties/version",
+      "description": "The semantic version of the spec for this document. This document is for version 1.5.0 and generates Ignition configs with version 3.4.0.",
+      "enum": ["1.5.0"],
+      "default": "1.5.0"
+    },
+    "ignition": {
+      "$ref": "#/properties/ignition"
+    },
+    "storage": {
+      "$ref": "#/properties/storage"
+    },
+    "passwd": {
+      "$ref": "#/properties/passwd"
+    },
+    "systemd": {
+      "$ref": "#/properties/systemd",
+      "properties": {
+        "units": {
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/properties/systemd/properties/units/items/oneOf/0/properties",
+                "properties": {
+                  "scope": {
+                    "type": "string",
+                    "title": "scope (string):",
+                    "description": "Allow to define \"user\", \"global\" or \"system\" (default) level systemd units. cf : [systemd Documentation](https://www.freedesktop.org/software/systemd/man/systemctl.html#enable%20UNIT%E2%80%A6)",
+                    "enum": ["system", "global", "user"],
+                    "default": "system"
+                  },
+                  "users": {
+                    "$ref": "#/definitions/stringoptions",
+                    "title": "users (list of strings):",
+                    "description": "The list of users concerned by the unit if scope is set to \"user\"."
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "kernel_arguments": {
+      "$ref": "#/properties/kernel_arguments"
+    },
+    "boot_device": {
+      "$ref": "#/properties/boot_device"
+    }
+  }
 }
