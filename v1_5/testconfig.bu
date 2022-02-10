@@ -189,6 +189,10 @@ systemd:
 
         [Install]
         WantedBy=multi-user.target
+      scope: user
+      users:
+        - core
+        - root
 
 
 kernel_arguments:
