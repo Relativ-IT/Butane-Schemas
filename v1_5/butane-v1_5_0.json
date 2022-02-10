@@ -5,7 +5,7 @@
 	"type": "object",
 	"title": "Fedora Coreos Butane Schema",
 	"description": "Schema to validate v1.5 specifications",
-	"required": ["variant", "version"],
+	"required": ["variant",	"version"],
 	"properties": {
 		"variant": {
 			"$ref": "#/properties/variant"
