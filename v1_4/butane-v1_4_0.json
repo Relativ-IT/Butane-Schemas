@@ -7,7 +7,7 @@
   "required": ["variant", "version"],
   "definitions": {
     "config": {
-      "$id": "/definitions/config",
+      "$id": "#/definitions/config",
       "oneOf": [
         {
           "type": "object",
@@ -48,14 +48,14 @@
       ]
     },
     "verification": {
-      "$id": "/definitions/verification",
+      "$id": "#/definitions/verification",
       "type": "object",
       "title": "verification (object):",
       "description": "Options related to the verification",
       "required": ["hash"],
       "properties": {
         "hash": {
-          "$id": "/definitions/verification/hash",
+          "$id": "#/definitions/verification/hash",
           "type": "string",
           "title": "hash (string):",
           "description": "The hash in the form type-value where type is either sha512 or sha256.",
@@ -64,7 +64,7 @@
       }
     },
     "http_headers": {
-      "$id": "/definitions/http_headers",
+      "$id": "#/definitions/http_headers",
       "type": "array",
       "title": "http_headers (list of objects):",
       "description": "A list of HTTP headers to be added to the request. Available for http and https source schemes only.",
@@ -93,24 +93,24 @@
     },
     "patterns": {
       "source_pattern": {
-        "$id": "/definitions/patterns/source_pattern",
+        "$id": "#/definitions/patterns/source_pattern",
         "pattern": "^((tftp|http|https|s3|gs):\/\/|data:)[^ \"]+$"
       },
       "guid_pattern": {
-        "$id": "/definitions/patterns/guid_pattern",
+        "$id": "#/definitions/patterns/guid_pattern",
         "pattern": "^[{]?[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}[}]?$"
       },
       "service_name": {
-        "$id": "/definitions/patterns/service_name",
+        "$id": "#/definitions/patterns/service_name",
         "pattern": "(.service|.socket|.device|.mount|.automount|.swap|.target|.path|.timer|.snapshot|.slice|.scope)$"
       },
       "dropin_name": {
-        "$id": "/definitions/patterns/dropin_name",
+        "$id": "#/definitions/patterns/dropin_name",
         "pattern": "(.conf)$"
       }
     },
     "stringoptions": {
-      "$id": "/definitions/stringoptions",
+      "$id": "#/definitions/stringoptions",
       "type": "array",
       "additionalItems": false,
       "uniqueItems": true,
@@ -124,7 +124,7 @@
       }
     },
     "contents": {
-      "$id": "/definitions/contents",
+      "$id": "#/definitions/contents",
       "type": "object",
       "additionalItems": false,
       "properties": {
@@ -160,7 +160,7 @@
       }
     },
     "security_object": {
-      "$id": "/definitions/security_object",
+      "$id": "#/definitions/security_object",
       "type": "object",
       "additionalItems": false,
       "oneOf": [
@@ -183,7 +183,7 @@
       }
     },
     "user": {
-      "$id": "/definitions/user",
+      "$id": "#/definitions/user",
       "$ref": "#/definitions/security_object",
       "title": "user (object):",
       "description": "specifies the owner.",
@@ -197,7 +197,7 @@
       }
     },
     "group": {
-      "$id": "/definitions/group",
+      "$id": "#/definitions/group",
       "$ref": "#/definitions/security_object",
       "title": "group (object):",
       "description": "specifies the group of the owner.",
@@ -211,7 +211,7 @@
       }
     },
     "tang": {
-      "$id": "/definitions/tang",
+      "$id": "#/definitions/tang",
       "type": "array",
       "title": "tang (list of objects):",
       "description": "Describes a tang server. Every server must have a unique url.",
