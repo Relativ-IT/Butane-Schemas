@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://github.com/Nemric/Butane-Schemas/releases/latest/download/butane-v1_4_0.json",
   "type": "object",
   "title": "Fedora Coreos Butane Schema",
@@ -8,7 +8,7 @@
   "definitions": {
     "config": {
       "$id": "#/definitions/config",
-      "oneOf": [
+      "anyOf": [
         {
           "type": "object",
           "properties": {
@@ -72,7 +72,7 @@
       "uniqueItems": true,
       "minItems": 1,
       "items": {
-        "oneOf": [
+        "anyOf": [
           {
             "required": ["name"],
             "properties": {
@@ -116,7 +116,7 @@
       "uniqueItems": true,
       "minItems": 1,
       "items": {
-        "oneOf": [
+        "anyOf": [
           {
             "type": "string"
           }
@@ -163,7 +163,7 @@
       "$id": "#/definitions/security_object",
       "type": "object",
       "additionalItems": false,
-      "oneOf": [
+      "anyOf": [
         {
           "required": ["id"]
         },
@@ -219,7 +219,7 @@
       "uniqueItems": true,
       "minItems": 1,
       "items": {
-        "oneOf": [
+        "anyOf": [
           {
             "required": ["url", "thumbprint"],
             "properties": {
@@ -241,7 +241,7 @@
   },
   "properties": {
     "variant": {
-      "$id": "/properties/variant",
+      "$id": "#/properties/variant",
       "type": "string",
       "title": "variant (string):",
       "description": "Used to differentiate configs for different operating systems. Must be fcos for this specification.",
@@ -249,7 +249,7 @@
       "default": "fcos"
     },
     "version": {
-      "$id": "/properties/version",
+      "$id": "#/properties/version",
       "type": "string",
       "title": "version (string):",
       "description": "The semantic version of the spec for this document. This document is for version 1.4.0 and generates Ignition configs with version 3.3.0.",
@@ -257,7 +257,7 @@
       "default": "1.4.0"
     },
     "ignition": {
-      "$id": "/properties/ignition",
+      "$id": "#/properties/ignition",
       "type": "object",
       "title": "ignition (object):",
       "description": "Metadata about the configuration itself.",
@@ -322,7 +322,7 @@
                   "uniqueItems": true,
                   "minItems": 1,
                   "items": {
-                    "oneOf": [
+                    "anyOf": [
                       {
                         "properties": {
                           "source": {
@@ -389,7 +389,7 @@
       }
     },
     "storage": {
-      "$id": "/properties/storage",
+      "$id": "#/properties/storage",
       "type": "object",
       "title": "storage (object):",
       "description": "Describes the desired state of the system’s storage devices.",
@@ -402,7 +402,7 @@
           "uniqueItems": true,
           "minItems": 1,
           "items": {
-            "oneOf": [
+            "anyOf": [
               {
                 "required": ["device"],
                 "properties": {
@@ -425,7 +425,7 @@
                     "uniqueItems": true,
                     "minItems": 1,
                     "items": {
-                      "oneOf": [
+                      "anyOf": [
                         {
                           "properties": {
                             "label": {
@@ -497,7 +497,7 @@
           "uniqueItems": true,
           "minItems": 1,
           "items": {
-            "oneOf": [
+            "anyOf": [
               {
                 "required": ["name", "level", "devices"],
                 "properties": {
@@ -540,7 +540,7 @@
           "uniqueItems": true,
           "minItems": 1,
           "items": {
-            "oneOf": [
+            "anyOf": [
               {
                 "required": ["device", "format"],
                 "properties": {
@@ -605,7 +605,7 @@
           "uniqueItems": true,
           "minItems": 1,
           "items": {
-            "oneOf": [
+            "anyOf": [
               {
                 "required": ["path"],
                 "properties": {
@@ -632,7 +632,7 @@
                     "uniqueItems": true,
                     "minItems": 1,
                     "items": {
-                      "oneOf": [
+                      "anyOf": [
                         {
                           "$ref": "#/definitions/contents"
                         }
@@ -663,7 +663,7 @@
           "uniqueItems": true,
           "minItems": 1,
           "items": {
-            "oneOf": [
+            "anyOf": [
               {
                 "required": ["path"],
                 "properties": {
@@ -701,7 +701,7 @@
           "uniqueItems": true,
           "minItems": 1,
           "items": {
-            "oneOf": [
+            "anyOf": [
               {
                 "required": ["path"],
                 "properties": {
@@ -742,6 +742,7 @@
           }
         },
         "luks": {
+          "$id": "#/properties/storage/luks",
           "type": "array",
           "title": "luks (list of objects):",
           "description": "The list of files to be written. Every file, directory and link must have a unique path.",
@@ -749,7 +750,7 @@
           "uniqueItems": true,
           "minItems": 1,
           "items": {
-            "oneOf": [
+            "anyOf": [
               {
                 "required": ["name", "device"],
                 "properties": {
@@ -845,7 +846,7 @@
           "uniqueItems": true,
           "minItems": 1,
           "items": {
-            "oneOf": [
+            "anyOf": [
               {
                 "required": ["local"],
                 "properties": {
@@ -867,7 +868,7 @@
       }
     },
     "systemd": {
-      "$id": "/properties/systemd",
+      "$id": "#/properties/systemd",
       "type": "object",
       "title": "systemd (object):",
       "description": "Describes the desired state of the systemd units.",
@@ -880,7 +881,7 @@
           "uniqueItems": true,
           "minItems": 1,
           "items": {
-            "oneOf": [
+            "anyOf": [
               {
                 "required": ["name"],
                 "properties": {
@@ -913,7 +914,7 @@
                     "uniqueItems": true,
                     "minItems": 1,
                     "items": {
-                      "oneOf": [
+                      "anyOf": [
                         {
                           "required": ["name"],
                           "properties": {
@@ -941,7 +942,7 @@
       }
     },
     "passwd": {
-      "$id": "/properties/passwd",
+      "$id": "#/properties/passwd",
       "type": "object",
       "title": "passwd (object):",
       "description": "Describes the desired additions to the passwd database.",
@@ -954,7 +955,7 @@
           "uniqueItems": true,
           "minItems": 1,
           "items": {
-            "oneOf": [
+            "anyOf": [
               {
                 "required": ["name"],
                 "properties": {
@@ -973,7 +974,7 @@
                     "title": "ssh_authorized_keys (list of strings):",
                     "description": "A list of SSH keys to be added as an SSH key fragment at .ssh/authorized_keys.d/ignition in the user’s home directory. All SSH keys must be unique.",
                     "items": {
-                      "oneOf": [
+                      "anyOf": [
                         {
                           "pattern": "^(ssh-rsa AAAAB3NzaC1yc2|ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNT|ecdsa-sha2-nistp384 AAAAE2VjZHNhLXNoYTItbmlzdHAzODQAAAAIbmlzdHAzOD|ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1Mj|ssh-ed25519 AAAAC3NzaC1lZDI1NTE5|ssh-dss AAAAB3NzaC1kc3)[0-9A-Za-z+/]+[=]{0,3}( .*)?$"
                         }
@@ -1048,7 +1049,7 @@
           "uniqueItems": true,
           "minItems": 1,
           "items": {
-            "oneOf": [
+            "anyOf": [
               {
                 "required": ["name"],
                 "properties": {
@@ -1085,7 +1086,7 @@
       }
     },
     "kernel_arguments": {
-      "$id": "/properties/kernel_arguments",
+      "$id": "#/properties/kernel_arguments",
       "type": "object",
       "title": "kernel_arguments (object):",
       "description": "Describes the desired kernel arguments.",
@@ -1103,7 +1104,7 @@
       }
     },
     "boot_device": {
-      "$id": "/properties/boot_device",
+      "$id": "#/properties/boot_device",
       "type": "object",
       "title": "boot_device (object):",
       "description": "Describes the desired boot device configuration. At least one of luks or mirror must be specified.",
@@ -1115,6 +1116,7 @@
           "enum": ["aarch64", "ppc64le", "x86_64"]
         },
         "luks": {
+          "$id": "#/properties/boot_device/luks",
           "type": "object",
           "title": "luks (object):",
           "description": "Describes the clevis configuration for encrypting the root filesystem.",
