@@ -26,13 +26,12 @@
       "$ref": "#/properties/passwd"
     },
     "systemd": {
-      "$ref": "#/properties/systemd",
+      "allOf": [{ "$ref": "#/properties/systemd" }],
       "properties": {
         "units": {
           "items": {
             "oneOf": [
               {
-                "$ref": "#/properties/systemd/properties/units/items/oneOf/0/properties",
                 "properties": {
                   "scope": {
                     "type": "string",
