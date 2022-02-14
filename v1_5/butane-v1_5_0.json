@@ -5,10 +5,11 @@
   "type": "object",
   "title": "Fedora Coreos Butane Schema",
   "description": "Schema to validate v1.5 specifications",
+  "$comment": "Copyright [2022] [Emeric Chassagne]\n\nLicensed under the Apache License, Version 2.0 (the \"License\");\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at\n\nhttp://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and\nlimitations under the License.",
   "required": ["variant",	"version"],
   "properties": {
     "variant": {
-      "$ref": "#/properties/variant"
+      "allOf": [{ "$ref": "#/properties/variant" }]
     },
     "version": {
       "$ref": "#/properties/version",
@@ -17,22 +18,84 @@
       "default": "1.5.0"
     },
     "ignition": {
-      "$ref": "#/properties/ignition"
+      "allOf": [{ "$ref": "#/properties/ignition" }]
     },
     "storage": {
-      "$ref": "#/properties/storage"
+      "allOf": [{ "$ref": "#/properties/storage" }]
     },
     "passwd": {
-      "$ref": "#/properties/passwd"
+      "allOf": [{ "$ref": "#/properties/passwd" }]
     },
     "systemd": {
-      "allOf": [{ "$ref": "#/properties/systemd" }],
+      "$id": "#/properties/systemd",
+      "type": "object",
+      "title": "systemd (object):",
+      "description": "Describes the desired state of the systemd units.",
+      "additionalProperties": false,
       "properties": {
         "units": {
+          "type": "array",
+          "title": "units (list of objects):",
+          "description": "The list of systemd units. Every unit must have a unique name.",
+          "additionalItems": false,
+          "uniqueItems": true,
+          "minItems": 1,
           "items": {
             "oneOf": [
               {
+                "required": ["name"],
+                "additionalProperties": false,
                 "properties": {
+                  "name": {
+                    "$ref": "#/definitions/patterns/service_name",
+                    "type": "string",
+                    "title": "name (string):",
+                    "description": "The name of the unit. This must be suffixed with a valid unit type (e.g. “thing.service”)."
+                  },
+                  "enabled": {
+                    "type": "boolean",
+                    "title": "enabled (boolean):",
+                    "description": "Whether or not the service shall be enabled. When true, the service is enabled. When false, the service is disabled. When omitted, the service is unmodified. In order for this to have any effect, the unit must have an install section."
+                  },
+                  "mask": {
+                    "type": "boolean",
+                    "title": "enabled (boolean):",
+                    "description": "Whether or not the service shall be masked. When true, the service is masked by symlinking it to /dev/null."
+                  },
+                  "contents": {
+                    "type": "string",
+                    "title": "contents (string):",
+                    "description": "The contents of the unit."
+                  },
+                  "dropins": {
+                    "type": "array",
+                    "title": "dropins (list of objects):",
+                    "description": "The list of drop-ins for the unit. Every drop-in must have a unique name.",
+                    "additionalItems": false,
+                    "uniqueItems": true,
+                    "minItems": 1,
+                    "items": {
+                      "oneOf": [
+                        {
+                          "required": ["name"],
+                          "additionalProperties": false,
+                          "properties": {
+                            "name": {
+                              "$ref": "#/definitions/patterns/dropin_name",
+                              "type": "string",
+                              "title": "name (string):",
+                              "description": "The name of the drop-in. This must be suffixed with '.conf'."
+                            },
+                            "contents": {
+                              "type": "string",
+                              "title": "contents (string):",
+                              "description": "The contents of the drop-in."
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
                   "scope": {
                     "type": "string",
                     "title": "scope (string):",
@@ -53,10 +116,10 @@
       }
     },
     "kernel_arguments": {
-      "$ref": "#/properties/kernel_arguments"
+      "allOf": [{ "$ref": "#/properties/kernel_arguments" }]
     },
     "boot_device": {
-      "$ref": "#/properties/boot_device"
+      "allOf": [{ "$ref": "#/properties/boot_device" }]
     }
   }
 }

@@ -147,7 +147,7 @@ storage:
             thumbprint: REPLACE-THIS-WITH-YOUR-TANG-THUMBPRINT
 
   trees:
-    - local: v1_4
+    - local: v1_5
 
 passwd:
   users:
@@ -193,7 +193,6 @@ systemd:
       users:
         - core
         - root
-
 
 kernel_arguments:
   should_exist:
