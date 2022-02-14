@@ -1,16 +1,19 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "https://github.com/Nemric/Butane-Schemas/releases/latest/download/butane-v1_4_0.json",
   "type": "object",
   "title": "Fedora Coreos Butane Schema",
   "description": "Schema to validate v1.4 specifications",
-  "required": ["variant", "version"],
+  "additionalProperties": false,
+  "required": ["variant","version"],
+
   "definitions": {
     "config": {
       "$id": "#/definitions/config",
-      "anyOf": [
+      "oneOf": [
         {
           "type": "object",
+          "additionalProperties": false,
           "properties": {
             "source": {
               "$ref": "#/definitions/patterns/source_pattern",
@@ -28,6 +31,7 @@
           }
         },
         {
+          "additionalProperties": false,
           "properties": {
             "inline": {
               "type": "string",
@@ -37,6 +41,7 @@
           }
         },
         {
+          "additionalProperties": false,
           "properties": {
             "local": {
               "type": "string",
@@ -52,6 +57,7 @@
       "type": "object",
       "title": "verification (object):",
       "description": "Options related to the verification",
+      "additionalProperties": false,
       "required": ["hash"],
       "properties": {
         "hash": {
@@ -72,8 +78,9 @@
       "uniqueItems": true,
       "minItems": 1,
       "items": {
-        "anyOf": [
+        "oneOf": [
           {
+            "additionalProperties": false,
             "required": ["name"],
             "properties": {
               "name": {
@@ -91,7 +98,7 @@
         ]
       }
     },
-    "patterns": {
+    "patterns":{
       "source_pattern": {
         "$id": "#/definitions/patterns/source_pattern",
         "pattern": "^((tftp|http|https|s3|gs):\/\/|data:)[^ \"]+$"
@@ -116,7 +123,7 @@
       "uniqueItems": true,
       "minItems": 1,
       "items": {
-        "anyOf": [
+        "oneOf": [
           {
             "type": "string"
           }
@@ -132,7 +139,7 @@
           "type": "string",
           "title": "compression (string):",
           "description": "The type of compression used on the contents (null or gzip). Compression cannot be used with S3.",
-          "enum": ["null", "gzip"]
+          "enum": ["null","gzip"]
         },
         "source": {
           "$ref": "#/definitions/patterns/source_pattern",
@@ -163,13 +170,9 @@
       "$id": "#/definitions/security_object",
       "type": "object",
       "additionalItems": false,
-      "anyOf": [
-        {
-          "required": ["id"]
-        },
-        {
-          "required": ["name"]
-        }
+      "oneOf": [
+        {"required": ["id"]},
+        {"required": ["name"]}
       ],
       "properties": {
         "id": {
@@ -210,7 +213,7 @@
         }
       }
     },
-    "tang": {
+    "tang":{
       "$id": "#/definitions/tang",
       "type": "array",
       "title": "tang (list of objects):",
@@ -219,9 +222,10 @@
       "uniqueItems": true,
       "minItems": 1,
       "items": {
-        "anyOf": [
+        "oneOf": [
           {
-            "required": ["url", "thumbprint"],
+            "required": ["url","thumbprint"],
+            "additionalProperties": false,
             "properties": {
               "url": {
                 "type": "string",
@@ -261,11 +265,13 @@
       "type": "object",
       "title": "ignition (object):",
       "description": "Metadata about the configuration itself.",
+      "additionalProperties": false,
       "properties": {
         "config": {
           "type": "object",
           "title": "config (objects):",
           "description": "Options related to the configuration.",
+          "additionalProperties": false,
           "properties": {
             "merge": {
               "type": "array",
@@ -287,6 +293,7 @@
           "type": "object",
           "title": "timeouts (object):",
           "description": "Options relating to http timeouts when fetching files over http or https.",
+          "additionalProperties": false,
           "properties": {
             "http_response_headers": {
               "type": "integer",
@@ -306,12 +313,14 @@
           "type": "object",
           "title": "security (object):",
           "description": "Options relating to network security.",
+          "additionalProperties": false,
           "required": ["tls"],
           "properties": {
             "tls": {
               "type": "object",
               "title": "tls (object):",
               "description": "Options relating to TLS when fetching resources over https.",
+              "additionalProperties": false,
               "required": ["certificate_authorities"],
               "properties": {
                 "certificate_authorities": {
@@ -322,8 +331,9 @@
                   "uniqueItems": true,
                   "minItems": 1,
                   "items": {
-                    "anyOf": [
+                    "oneOf": [
                       {
+                        "additionalProperties": false,
                         "properties": {
                           "source": {
                             "$ref": "#/definitions/patterns/source_pattern",
@@ -340,6 +350,7 @@
                         }
                       },
                       {
+                        "additionalProperties": false,
                         "properties": {
                           "inline": {
                             "type": "string",
@@ -349,6 +360,7 @@
                         }
                       },
                       {
+                        "additionalProperties": false,
                         "properties": {
                           "local": {
                             "type": "string",
@@ -368,6 +380,7 @@
           "type": "object",
           "title": "proxy (object):",
           "description": "Options relating to setting an HTTP(S) proxy when fetching resources.",
+          "additionalProperties": false,
           "properties": {
             "http_proxy": {
               "type": "string",
@@ -393,6 +406,7 @@
       "type": "object",
       "title": "storage (object):",
       "description": "Describes the desired state of the system’s storage devices.",
+      "additionalProperties": false,
       "properties": {
         "disks": {
           "type": "array",
@@ -402,9 +416,10 @@
           "uniqueItems": true,
           "minItems": 1,
           "items": {
-            "anyOf": [
+            "oneOf": [
               {
                 "required": ["device"],
+                "additionalProperties": false,
                 "properties": {
                   "device": {
                     "type": "string",
@@ -425,8 +440,9 @@
                     "uniqueItems": true,
                     "minItems": 1,
                     "items": {
-                      "anyOf": [
+                      "oneOf": [
                         {
+                          "additionalProperties": false,
                           "properties": {
                             "label": {
                               "type": "string",
@@ -497,9 +513,10 @@
           "uniqueItems": true,
           "minItems": 1,
           "items": {
-            "anyOf": [
+            "oneOf": [
               {
-                "required": ["name", "level", "devices"],
+                "required": ["name","level","devices"],
+                "additionalProperties": false,
                 "properties": {
                   "name": {
                     "type": "string",
@@ -510,7 +527,7 @@
                     "type": "string",
                     "title": "level (string):",
                     "description": "The redundancy level of the array (e.g. linear, raid1, raid5, etc.).",
-                    "enum": ["linear", "raid0", "0", "stripe", "raid1", "1", "mirror", "raid4", "4", "raid5", "5", "raid6", "6", "raid10", "10"]
+                    "enum": ["linear","raid0","0","stripe","raid1","1","mirror","raid4","4","raid5","5","raid6","6","raid10","10"]
                   },
                   "devices": {
                     "$ref": "#/definitions/stringoptions",
@@ -540,9 +557,10 @@
           "uniqueItems": true,
           "minItems": 1,
           "items": {
-            "anyOf": [
+            "oneOf": [
               {
-                "required": ["device", "format"],
+                "required": ["device","format"],
+                "additionalProperties": false,
                 "properties": {
                   "device": {
                     "type": "string",
@@ -553,7 +571,7 @@
                     "type": "string",
                     "title": "format (string):",
                     "description": "The filesystem format (ext4, btrfs, xfs, vfat, swap, or none).",
-                    "enum": ["ext4", "btrfs", "xfs", "vfat", "swap", "none"]
+                    "enum": ["ext4","btrfs","xfs","vfat","swap","none"]
                   },
                   "path": {
                     "type": "string",
@@ -605,9 +623,10 @@
           "uniqueItems": true,
           "minItems": 1,
           "items": {
-            "anyOf": [
+            "oneOf": [
               {
                 "required": ["path"],
+                "additionalProperties": false,
                 "properties": {
                   "path": {
                     "type": "string",
@@ -632,7 +651,7 @@
                     "uniqueItems": true,
                     "minItems": 1,
                     "items": {
-                      "anyOf": [
+                      "oneOf": [
                         {
                           "$ref": "#/definitions/contents"
                         }
@@ -663,9 +682,10 @@
           "uniqueItems": true,
           "minItems": 1,
           "items": {
-            "anyOf": [
+            "oneOf": [
               {
                 "required": ["path"],
+                "additionalProperties": false,
                 "properties": {
                   "path": {
                     "type": "string",
@@ -701,9 +721,10 @@
           "uniqueItems": true,
           "minItems": 1,
           "items": {
-            "anyOf": [
+            "oneOf": [
               {
                 "required": ["path"],
+                "additionalProperties": false,
                 "properties": {
                   "path": {
                     "type": "string",
@@ -750,9 +771,10 @@
           "uniqueItems": true,
           "minItems": 1,
           "items": {
-            "anyOf": [
+            "oneOf": [
               {
-                "required": ["name", "device"],
+                "required": ["name","device"],
+                "additionalProperties": false,
                 "properties": {
                   "name": {
                     "type": "string",
@@ -794,8 +816,9 @@
                     "type": "object",
                     "title": "clevis (object):",
                     "description": "Describes the clevis configuration for the luks device.",
+                    "additionalProperties": false,
                     "properties": {
-                      "tang": {
+                      "tang":{
                         "$ref": "#/definitions/tang"
                       },
                       "tpm2": {
@@ -812,7 +835,8 @@
                         "type": "object",
                         "title": "clevis (object):",
                         "description": "Overrides the clevis configuration. The pin & config will be passed directly to clevis luks bind. If specified, all other clevis options must be omitted.",
-                        "required": ["pin", "config"],
+                        "required": ["pin","config"],
+                        "additionalProperties": false,
                         "properties": {
                           "pin": {
                             "type": "string",
@@ -846,9 +870,10 @@
           "uniqueItems": true,
           "minItems": 1,
           "items": {
-            "anyOf": [
+            "oneOf": [
               {
                 "required": ["local"],
+                "additionalProperties": false,
                 "properties": {
                   "local": {
                     "type": "string",
@@ -872,6 +897,7 @@
       "type": "object",
       "title": "systemd (object):",
       "description": "Describes the desired state of the systemd units.",
+      "additionalProperties": false,
       "properties": {
         "units": {
           "type": "array",
@@ -881,9 +907,10 @@
           "uniqueItems": true,
           "minItems": 1,
           "items": {
-            "anyOf": [
+            "oneOf": [
               {
                 "required": ["name"],
+                "additionalProperties": false,
                 "properties": {
                   "name": {
                     "$ref": "#/definitions/patterns/service_name",
@@ -914,9 +941,10 @@
                     "uniqueItems": true,
                     "minItems": 1,
                     "items": {
-                      "anyOf": [
+                      "oneOf": [
                         {
                           "required": ["name"],
+                          "additionalProperties": false,
                           "properties": {
                             "name": {
                               "$ref": "#/definitions/patterns/dropin_name",
@@ -946,6 +974,7 @@
       "type": "object",
       "title": "passwd (object):",
       "description": "Describes the desired additions to the passwd database.",
+      "additionalProperties": false,
       "properties": {
         "users": {
           "type": "array",
@@ -955,9 +984,10 @@
           "uniqueItems": true,
           "minItems": 1,
           "items": {
-            "anyOf": [
+            "oneOf": [
               {
                 "required": ["name"],
+                "additionalProperties": false,
                 "properties": {
                   "name": {
                     "type": "string",
@@ -974,7 +1004,7 @@
                     "title": "ssh_authorized_keys (list of strings):",
                     "description": "A list of SSH keys to be added as an SSH key fragment at .ssh/authorized_keys.d/ignition in the user’s home directory. All SSH keys must be unique.",
                     "items": {
-                      "anyOf": [
+                      "oneOf": [
                         {
                           "pattern": "^(ssh-rsa AAAAB3NzaC1yc2|ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNT|ecdsa-sha2-nistp384 AAAAE2VjZHNhLXNoYTItbmlzdHAzODQAAAAIbmlzdHAzOD|ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1Mj|ssh-ed25519 AAAAC3NzaC1lZDI1NTE5|ssh-dss AAAAB3NzaC1kc3)[0-9A-Za-z+/]+[=]{0,3}( .*)?$"
                         }
@@ -1032,7 +1062,7 @@
                     "description": "Whether or not this account should be a system account. This only has an effect if the account doesn’t exist yet."
                   },
                   "should_exist": {
-                    "type": "boolean",
+                    "type":"boolean",
                     "title": "should_exist (boolean)",
                     "description": "Whether or not the user with the specified name should exist. If omitted, it defaults to true. If false, then Ignition will delete the specified user."
                   }
@@ -1049,9 +1079,10 @@
           "uniqueItems": true,
           "minItems": 1,
           "items": {
-            "anyOf": [
+            "oneOf": [
               {
                 "required": ["name"],
+                "additionalProperties": false,
                 "properties": {
                   "name": {
                     "type": "string",
@@ -1074,7 +1105,7 @@
                     "description": "Whether or not the group should be a system group. This only has an effect if the group doesn’t exist yet."
                   },
                   "should_exist": {
-                    "type": "boolean",
+                    "type":"boolean",
                     "title": "should_exist (boolean)",
                     "description": "Whether or not the group with the specified name should exist. If omitted, it defaults to true. If false, then Ignition will delete the specified group."
                   }
@@ -1090,6 +1121,7 @@
       "type": "object",
       "title": "kernel_arguments (object):",
       "description": "Describes the desired kernel arguments.",
+      "additionalProperties": false,
       "properties": {
         "should_exist": {
           "$ref": "#/definitions/stringoptions",
@@ -1108,20 +1140,22 @@
       "type": "object",
       "title": "boot_device (object):",
       "description": "Describes the desired boot device configuration. At least one of luks or mirror must be specified.",
+      "additionalProperties": false,
       "properties": {
         "layout": {
           "type": "string",
           "title": "layout (string):",
           "description": "The disk layout of the target OS image. Supported values are aarch64, ppc64le, and x86_64. Defaults to x86_64.",
-          "enum": ["aarch64", "ppc64le", "x86_64"]
+          "enum": ["aarch64","ppc64le","x86_64"]
         },
         "luks": {
           "$id": "#/properties/boot_device/luks",
           "type": "object",
           "title": "luks (object):",
           "description": "Describes the clevis configuration for encrypting the root filesystem.",
+          "additionalProperties": false,
           "properties": {
-            "tang": {
+            "tang":{
               "$ref": "#/definitions/tang"
             },
             "tpm2": {
@@ -1140,6 +1174,7 @@
           "type": "object",
           "title": "mirror (object):",
           "description": "Describes mirroring of the boot disk for fault tolerance.",
+          "additionalProperties": false,
           "properties": {
             "devices": {
               "$ref": "#/definitions/stringoptions",
