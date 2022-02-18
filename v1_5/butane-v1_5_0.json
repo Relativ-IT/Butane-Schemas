@@ -1,14 +1,15 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "https://json-schema.org/draft-07/schema#",
   "$id": "https://github.com/Nemric/Butane-Schemas/releases/latest/download/butane-v1_5_0.json",
   "type": "object",
   "title": "Fedora Coreos Butane Schema",
   "description": "Schema to validate v1.5 specifications",
   "$comment": "Copyright [2022] [Emeric Chassagne]\n\nLicensed under the Apache License, Version 2.0 (the \"License\");\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at\n\nhttp://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and\nlimitations under the License.",
+  
   "required": ["variant",	"version"],
   "properties": {
     "variant": {
-      "allOf": [{ "$ref": "https://github.com/Nemric/Butane-Schemas/releases/latest/download/butane-v1_4_0.json/#/properties/variant" }]
+      "allOf": [{ "$ref": "https://github.com/Nemric/Butane-Schemas/releases/latest/download/butane-v1_4_0.json#/properties/variant" }]
     },
     "version": {
       "$id": "#/properties/version",
@@ -19,13 +20,13 @@
       "default": "1.5.0"
     },
     "ignition": {
-      "allOf": [{ "$ref": "https://github.com/Nemric/Butane-Schemas/releases/latest/download/butane-v1_4_0.json/#/properties/ignition" }]
+      "allOf": [{ "$ref": "https://github.com/Nemric/Butane-Schemas/releases/latest/download/butane-v1_4_0.json#/properties/ignition" }]
     },
     "storage": {
-      "allOf": [{ "$ref": "https://github.com/Nemric/Butane-Schemas/releases/latest/download/butane-v1_4_0.json/#/properties/storage" }]
+      "allOf": [{ "$ref": "https://github.com/Nemric/Butane-Schemas/releases/latest/download/butane-v1_4_0.json#/properties/storage" }]
     },
     "passwd": {
-      "allOf": [{ "$ref": "https://github.com/Nemric/Butane-Schemas/releases/latest/download/butane-v1_4_0.json/#/properties/passwd" }]
+      "allOf": [{ "$ref": "https://github.com/Nemric/Butane-Schemas/releases/latest/download/butane-v1_4_0.json#/properties/passwd" }]
     },
     "systemd": {
       "$id": "#/properties/systemd",
@@ -48,7 +49,7 @@
                 "additionalProperties": false,
                 "properties": {
                   "name": {
-                    "$ref": "https://github.com/Nemric/Butane-Schemas/releases/latest/download/butane-v1_4_0.json/#/definitions/patterns/service_name",
+                    "$ref": "https://github.com/Nemric/Butane-Schemas/releases/latest/download/butane-v1_4_0.json#/definitions/patterns/service_name",
                     "type": "string",
                     "title": "name (string):",
                     "description": "The name of the unit. This must be suffixed with a valid unit type (e.g. “thing.service”)."
@@ -82,7 +83,7 @@
                           "additionalProperties": false,
                           "properties": {
                             "name": {
-                              "$ref": "https://github.com/Nemric/Butane-Schemas/releases/latest/download/butane-v1_4_0.json/#/definitions/patterns/dropin_name",
+                              "$ref": "https://github.com/Nemric/Butane-Schemas/releases/latest/download/butane-v1_4_0.json#/definitions/patterns/dropin_name",
                               "type": "string",
                               "title": "name (string):",
                               "description": "The name of the drop-in. This must be suffixed with '.conf'."
@@ -105,7 +106,7 @@
                     "default": "system"
                   },
                   "users": {
-                    "$ref": "https://github.com/Nemric/Butane-Schemas/releases/latest/download/butane-v1_4_0.json/#/definitions/stringoptions",
+                    "$ref": "https://github.com/Nemric/Butane-Schemas/releases/latest/download/butane-v1_4_0.json#/definitions/stringoptions",
                     "title": "users (list of strings):",
                     "description": "The list of users concerned by the unit if scope is set to \"user\"."
                   }
@@ -117,10 +118,10 @@
       }
     },
     "kernel_arguments": {
-      "allOf": [{ "$ref": "https://github.com/Nemric/Butane-Schemas/releases/latest/download/butane-v1_4_0.json/#/properties/kernel_arguments" }]
+      "allOf": [{ "$ref": "https://github.com/Nemric/Butane-Schemas/releases/latest/download/butane-v1_4_0.json#/properties/kernel_arguments" }]
     },
     "boot_device": {
-      "allOf": [{ "$ref": "https://github.com/Nemric/Butane-Schemas/releases/latest/download/butane-v1_4_0.json/#/properties/boot_device" }]
+      "allOf": [{ "$ref": "https://github.com/Nemric/Butane-Schemas/releases/latest/download/butane-v1_4_0.json#/properties/boot_device" }]
     }
   }
 }
