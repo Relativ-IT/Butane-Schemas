@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'v*/**'
+  workflow_dispatch:
 
 jobs:
   verify-json-validation:
