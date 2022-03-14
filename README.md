@@ -22,7 +22,7 @@ I won't describe all possibilities but the one I use :
 ```JSON
 "settings": {
   "yaml.schemas": {
-      "https://github.com/Nemric/Butane-Schemas/releases/latest/download/butane-v1_4_0.json": ["*.bu"]
+      "https://github.com/Relativ-IT/Butane-Schemas/releases/latest/download/butane-v1_4_0.json": ["*.bu"]
   },
   "files.associations": {
     "*.bu": "yaml",
