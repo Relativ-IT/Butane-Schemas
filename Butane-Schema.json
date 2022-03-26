@@ -22,7 +22,7 @@
           }
         },
         {
-          "$ref": "https://raw.githubusercontent.com/Relativ-IT/Butane-Schemas/main/v1.4.0/butane-v1.4.0.json"
+          "$ref": "https://raw.githubusercontent.com/Relativ-IT/Butane-Schemas/Release/v1.4.0/butane-v1.4.0.json"
         }
       ]
     },
@@ -36,7 +36,7 @@
           }
         },
         {
-          "$ref": "https://raw.githubusercontent.com/Relativ-IT/Butane-Schemas/main/v1.5.0-experimental/butane-v1.5.0-experimental.json"
+          "$ref": "https://raw.githubusercontent.com/Relativ-IT/Butane-Schemas/Release/v1.5.0-experimental/butane-v1.5.0-experimental.json"
         }
       ]
     }

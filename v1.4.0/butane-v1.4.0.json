@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://github.com/Nemric/Butane-Schemas/releases/latest/download/butane-v1_4_0.json#",
+  "$id": "https://raw.githubusercontent.com/Relativ-IT/Butane-Schemas/Release/v1.4.0/butane-v1.4.0.json#",
   "type": "object",
   "title": "Fedora Coreos Butane Schema",
   "description": "Schema to validate v1.4.0 specifications",
