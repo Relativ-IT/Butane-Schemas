@@ -3,7 +3,7 @@ name: Validate Changes
 on:
   push:
     paths:
-      - 'v*/**'
+      - '**.json'
   workflow_dispatch:
 
 jobs:
