@@ -258,7 +258,7 @@
       "$id": "#/properties/version",
       "type": "string",
       "title": "version (string):",
-      "description": "The semantic version of the spec for this document. This document is for version 1.5.0 and generates Ignition configs with version 3.4.0."
+      "description": "The semantic version of the spec for this document. This document is for version 1.5.0 experimental and generates Ignition configs with version 3.4.0 experimental"
     },
     "ignition": {
       "$id": "#/properties/ignition",
@@ -912,7 +912,7 @@
                 "required": ["name"],
                 "properties": {
                   "name": {
-                    "$ref": "https://github.com/Nemric/Butane-Schemas/releases/latest/download/butane-v1_4_0.json#/definitions/patterns/service_name",
+                    "$ref":"#/definitions/patterns/service_name",
                     "type": "string",
                     "title": "name (string):",
                     "description": "The name of the unit. This must be suffixed with a valid unit type (e.g. “thing.service”)."
@@ -946,7 +946,7 @@
                           "additionalProperties": false,
                           "properties": {
                             "name": {
-                              "$ref": "https://github.com/Nemric/Butane-Schemas/releases/latest/download/butane-v1_4_0.json#/definitions/patterns/dropin_name",
+                              "$ref": "#/definitions/patterns/dropin_name",
                               "type": "string",
                               "title": "name (string):",
                               "description": "The name of the drop-in. This must be suffixed with '.conf'."
@@ -969,7 +969,7 @@
                     "default": "system"
                   },
                   "users": {
-                    "$ref": "https://github.com/Nemric/Butane-Schemas/releases/latest/download/butane-v1_4_0.json#/definitions/stringoptions",
+                    "$ref": "#/definitions/stringoptions",
                     "title": "users (list of strings):",
                     "description": "The list of users concerned by the unit if scope is set to \"user\"."
                   }
