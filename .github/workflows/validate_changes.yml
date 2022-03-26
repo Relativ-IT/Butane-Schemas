@@ -15,7 +15,7 @@ jobs:
       - name: Validate all json files using their own $schema properties
         uses: cardinalby/schema-validator-action@v1
         with:
-          file: 'v*/*.json'
+          file: 'v*/*.json|*.json'
           
       - name: Validate butane v1.4 file using associate json schema
         uses: cardinalby/schema-validator-action@v1
