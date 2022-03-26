@@ -1,6 +1,6 @@
-# yaml-language-server: $schema=./butane-v1_5_0.json
+# yaml-language-server: $schema=./butane-v1.4.0.json
 variant: fcos
-version: 1.5.0
+version: 1.4.0
 
 ignition:
   config:
@@ -147,7 +147,7 @@ storage:
             thumbprint: REPLACE-THIS-WITH-YOUR-TANG-THUMBPRINT
 
   trees:
-    - local: v1_5
+    - local: v1_4
 
 passwd:
   users:
@@ -189,10 +189,7 @@ systemd:
 
         [Install]
         WantedBy=multi-user.target
-      scope: user
-      users:
-        - core
-        - root
+
 
 kernel_arguments:
   should_exist:

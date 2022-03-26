@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/Nemric/Butane-Schemas/releases/latest/download/Butane-Schema.json#",
+  "title": "Fedora Coreos Butane Schema",
+  "type": "object",
+  "oneOf": [
+    {
+      "allOf": [
+        {
+          "properties": {
+            "version": {
+              "const": "1.4.0"
+            }
+          }
+        },
+        {
+          "$ref": "https://raw.githubusercontent.com/Relativ-IT/Butane-Schemas/main/v1.4.0/butane-v1.4.0.json"
+        }
+      ]
+    },
+    {
+      "allOf": [
+        {
+          "properties": {
+            "version": {
+              "const": "1.5.0-experimental"
+            }
+          }
+        },
+        {
+          "$ref": "https://raw.githubusercontent.com/Relativ-IT/Butane-Schemas/main/v1.5.0/butane-v1.5.0-experimental.json"
+        }
+      ]
+    }
+  ]
+}
