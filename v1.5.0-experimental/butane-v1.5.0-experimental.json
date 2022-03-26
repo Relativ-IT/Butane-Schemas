@@ -258,9 +258,7 @@
       "$id": "#/properties/version",
       "type": "string",
       "title": "version (string):",
-      "description": "The semantic version of the spec for this document. This document is for version 1.5.0 and generates Ignition configs with version 3.4.0.",
-      "enum": ["1.5.0"],
-      "default": "1.5.0"
+      "description": "The semantic version of the spec for this document. This document is for version 1.5.0 and generates Ignition configs with version 3.4.0."
     },
     "ignition": {
       "$id": "#/properties/ignition",
