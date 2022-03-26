@@ -3,7 +3,7 @@
   "$id": "https://github.com/Nemric/Butane-Schemas/releases/latest/download/butane-v1.5.0-experimental.json#",
   "type": "object",
   "title": "Fedora Coreos Butane Schema",
-  "description": "Schema to validate v1.5 specifications",
+  "description": "Schema to validate v1.5.0 experimental specifications",
   "$comment": "Copyright [2022] [Emeric Chassagne]\n\nLicensed under the Apache License, Version 2.0 (the \"License\");\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at\n\nhttp://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and\nlimitations under the License.",
   
   "additionalProperties": false,
@@ -258,7 +258,7 @@
       "$id": "#/properties/version",
       "type": "string",
       "title": "version (string):",
-      "description": "The semantic version of the spec for this document. This document is for version 1.5.0 experimental and generates Ignition configs with version 3.4.0 experimental"
+      "description": "The semantic version of the spec for this document."
     },
     "ignition": {
       "$id": "#/properties/ignition",
