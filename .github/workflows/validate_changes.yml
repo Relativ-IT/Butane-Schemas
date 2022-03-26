@@ -26,5 +26,5 @@ jobs:
       - name: Validate butane v1.5 file using associate json schema
         uses: cardinalby/schema-validator-action@v1
         with:
-          file: 'v1.5.0-experimenta/testconfig.bu'
+          file: 'v1.5.0-experimental/testconfig.bu'
           schema: 'v1.5.0-experimental/butane-v1.5.0-experimental.json'
