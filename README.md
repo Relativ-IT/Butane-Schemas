@@ -31,4 +31,4 @@ I won't describe all possibilities but the one I use :
 }
 ```
 
-:bulb: Note that files associatiosn are optional, they only set vs code to map file type to the one it knows
+:bulb: Note that files associations are optional, they only set vs code to map file type to the one it knows
