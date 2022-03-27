@@ -111,7 +111,7 @@
       },
       "service_name": {
         "$id": "#/definitions/patterns/service_name",
-        "pattern": ".(service|socket|device|mount|automount|swap|target|path|timer|snapshot|slice|scope)$"
+        "pattern": "\\.(service|socket|device|mount|automount|swap|target|path|timer|snapshot|slice|scope)$"
       },
       "dropin_name": {
         "$id": "#/definitions/patterns/dropin_name",
@@ -909,7 +909,6 @@
           "items": {
             "oneOf": [
               {
-                "required": ["name"],
                 "properties": {
                   "name": {
                     "$ref":"#/definitions/patterns/service_name",
@@ -967,18 +966,21 @@
                     "description": "Allow to define \"user\", \"global\" or \"system\" (default) level systemd units. cf : [systemd Documentation](https://www.freedesktop.org/software/systemd/man/systemctl.html#enable%20UNIT%E2%80%A6)",
                     "enum": ["system", "global", "user"],
                     "default": "system"
-                  },
-                  "users": {
-                    "$ref": "#/definitions/stringoptions",
-                    "title": "users (list of strings):",
-                    "description": "The list of users concerned by the unit if scope is set to \"user\"."
                   }
                 },
                 "if": {
-                  "properties": { "scope": { "const": "user" } }
+                  "properties": { "scope": { "enum": ["system", "global"]} }
                 },
-                "then": {
-                  "required": ["users"]
+                "then": true,
+                "else": {                  
+                    "required": ["name","users"],
+                    "properties": {
+                    "users": {
+                      "$ref": "#/definitions/stringoptions",
+                      "title": "users (list of strings):",
+                      "description": "The list of users concerned by the unit if scope is set to \"user\"."
+                    }
+                  }
                 }
               }
             ]

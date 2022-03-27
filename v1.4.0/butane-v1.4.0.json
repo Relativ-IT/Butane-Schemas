@@ -110,7 +110,7 @@
       },
       "service_name": {
         "$id": "#/definitions/patterns/service_name",
-        "pattern": ".(service|socket|device|mount|automount|swap|target|path|timer|snapshot|slice|scope)$"
+        "pattern": "\\.(service|socket|device|mount|automount|swap|target|path|timer|snapshot|slice|scope)$"
       },
       "dropin_name": {
         "$id": "#/definitions/patterns/dropin_name",
