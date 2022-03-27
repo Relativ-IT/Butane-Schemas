@@ -285,6 +285,8 @@
               }
             },
             "replace": {
+              "title": "replace (object):",
+              "description": "The config that will replace the current.",
               "$ref": "#/definitions/config"
             }
           }
