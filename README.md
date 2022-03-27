@@ -1,6 +1,6 @@
 # Butane-Schemas
 
-Butane Schemas that helps creating Butane files for Fedora Coreos
+Butane Schemas that helps creating [Butane](https://coreos.github.io/butane/specs/) files for [Fedora Coreos](https://getfedora.org/fr/coreos?stream=stable)
 
 ## What is it ?
 
