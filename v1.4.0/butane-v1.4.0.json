@@ -245,19 +245,9 @@
     }
   },
   "properties": {
-    "variant": {
-      "$id": "#/properties/variant",
-      "type": "string",
-      "title": "variant (string):",
-      "description": "Used to differentiate configs for different operating systems. Must be fcos for this specification.",
-      "enum": ["fcos"],
-      "default": "fcos"
-    },
+    "variant": {},
     "version": {
-      "$id": "#/properties/version",
-      "type": "string",
-      "title": "version (string):",
-      "description": "The semantic version of the spec for this document."
+      "description": "The semantic version of the spec for this document. This document is for version 1.4.0 and generates Ignition configs with version 3.3.0."
     },
     "ignition": {
       "$id": "#/properties/ignition",
