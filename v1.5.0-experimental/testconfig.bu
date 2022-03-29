@@ -153,9 +153,15 @@ passwd:
   users:
     - name: user1
       ssh_authorized_keys:
-        - ssh-rsa AAAAB3NzaC1yc2andmore
+        - ssh-rsa AAAAB3NzaC1yc2asdfas test@openssh.com
+        - ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNT asdfasdf
+        - ecdsa-sha2-nistp384 AAAAE2VjZHNhLXNoYTItbmlzdHAzODQAAAAIbmlzdHAzOD asdfasdf
+        - ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1Mj test@example.net
+        - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5 testing
+        - sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAI yubikey 5 nfc
+        - ssh-dss AAAAB3NzaC1kc3 oldkey@example.com
       password_hash: $y$j9T$aUmgEDoFIDPhGxEe2FUjc/$C5A...
-      home_dir: /home/user1
+      home_dir: /home/user1#
       no_create_home: true
       groups:
         - wheel
