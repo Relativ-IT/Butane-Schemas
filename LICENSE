@@ -199,3 +199,30 @@
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
+
+===========================================================================
+
+Below is a summary of the external licensing used in this project.
+
+Upstream-Name: salt
+Upstream-Contact: salt-users@googlegroups.com
+Source: https://github.com/saltstack/salt
+
+File: v1.4.0/butane-v1.4.0.json
+Line: 1000
+File: v1.5.0-experimental/butane-v1.5.0-experimental.json
+Line: 1020
+
+Copyright: 2022 SaltStack Team
+License: Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+     http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
