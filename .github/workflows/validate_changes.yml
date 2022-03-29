@@ -18,7 +18,7 @@ jobs:
   verify-json-validation:
     runs-on:  ubuntu-latest
     steps:
-      #- uses: actions/checkout@v3
+      - uses: actions/checkout@v3
       
       - name: Validate all json files using their own $schema properties
         uses: cardinalby/schema-validator-action@v1
