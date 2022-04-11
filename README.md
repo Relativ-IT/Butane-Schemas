@@ -6,7 +6,7 @@ Butane Schemas that helps creating [Butane](https://coreos.github.io/butane/spec
 
 This is a Json Schema that can be used as a helper to write a [butane config file](https://github.com/coreos/butane) according to [its specifications](https://github.com/coreos/butane/tree/main/docs)
 
-## Use it with VsCode ?
+## Use it with VsCode
 
 - Install [vs code](https://github.com/microsoft/vscode)
 - Install the [Red hat YAML extension](https://github.com/redhat-developer/vscode-yaml)
