@@ -7,12 +7,15 @@ on:
     branches:
       - main
       - Release
-
+    
   pull_request:
     paths:
       - '**.json'
       
   workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   verify-json-validation:
