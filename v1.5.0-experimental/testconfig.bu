@@ -115,7 +115,7 @@ storage:
 
     - path: /opt/file2
       contents:
-        source: http://example.com/file2
+        source: arn:example.com/file2
         compression: gzip
         verification:
           hash: sha512-4ee6a9d20cc0e6c7ee187daffa6822bdef7f4cebe109eff44b235f97e45dc3d7a5bb932efc841192e46618f48a6f4f5bc0d15fd74b1038abf46bf4b4fd409f2e

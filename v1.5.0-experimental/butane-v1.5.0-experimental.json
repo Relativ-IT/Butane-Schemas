@@ -21,7 +21,7 @@
               "$ref": "#/definitions/patterns/source_pattern",
               "type": "string",
               "title": "source (string):",
-              "description": "The URL of the config. Supported schemes are http, https, s3, gs, tftp, and data. Note: When using http, it is advisable to use the verification option to ensure the contents haven’t been modified. Mutually exclusive with inline and local."
+              "description": "The URL of the config. Supported schemes are http, https, tftp, s3, arn, gs, and data. Note: When using http, it is advisable to use the verification option to ensure the contents haven't been modified. Mutually exclusive with inline and local."
             },
             "http_headers": {
               "$ref": "#/definitions/http_headers"
@@ -103,7 +103,7 @@
     "patterns":{
       "source_pattern": {
         "$id": "#/definitions/patterns/source_pattern",
-        "pattern": "^((tftp|http|https|s3|gs):\/\/|data:)[^ \"]+$"
+        "pattern": "^((tftp|http|https|s3|gs):\/\/|(data|arn):)[^ \"]+$"
       },
       "guid_pattern": {
         "$id": "#/definitions/patterns/guid_pattern",
@@ -151,7 +151,7 @@
           "$ref": "#/definitions/patterns/source_pattern",
           "type": "string",
           "title": "source (string):",
-          "description": "The URL of the contents. Supported schemes are http, https, s3, gs, tftp, and data. Note: When using http, it is advisable to use the verification option to ensure the contents haven’t been modified. Mutually exclusive with inline and local."
+          "description": "The URL of the contents. Supported schemes are http, https, tftp, s3, arn, gs, and data. Note: When using http, it is advisable to use the verification option to ensure the contents haven’t been modified. Mutually exclusive with inline and local."
         },
         "http_headers": {
           "$ref": "#/definitions/http_headers"
@@ -335,7 +335,7 @@
                             "$ref": "#/definitions/patterns/source_pattern",
                             "type": "string",
                             "title": "source (string):",
-                            "description": "The URL of the certificate bundle (in PEM format). With Ignition ≥ 2.4.0, the bundle can contain multiple concatenated certificates. Supported schemes are http, https, s3, gs, tftp, and data. Note: When using http, it is advisable to use the verification option to ensure the contents haven’t been modified. Mutually exclusive with inline and local."
+                            "description": "The URL of the certificate bundle (in PEM format). With Ignition ≥ 2.4.0, the bundle can contain multiple concatenated certificates. Supported schemes are http, https, tftp, s3, arn, gs, and data. Note: When using http, it is advisable to use the verification option to ensure the contents haven't been modified. Mutually exclusive with inline and local."
                           },
                           "verification": {
                             "$ref": "#/definitions/verification"
