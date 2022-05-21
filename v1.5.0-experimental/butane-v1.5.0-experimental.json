@@ -21,7 +21,7 @@
               "$ref": "#/definitions/patterns/source_pattern",
               "type": "string",
               "title": "source (string):",
-              "description": "The URL of the config. Supported schemes are http, https, s3, gs, tftp, and data. Note: When using http, it is advisable to use the verification option to ensure the contents haven’t been modified. Mutually exclusive with inline and local."
+              "description": "The URL of the config. Supported schemes are http, https, tftp, s3, arn, gs, and data. Note: When using http, it is advisable to use the verification option to ensure the contents haven't been modified. Mutually exclusive with inline and local."
             },
             "http_headers": {
               "$ref": "#/definitions/http_headers"
@@ -103,7 +103,7 @@
     "patterns":{
       "source_pattern": {
         "$id": "#/definitions/patterns/source_pattern",
-        "pattern": "^((tftp|http|https|s3|gs):\/\/|data:)[^ \"]+$"
+        "pattern": "^((tftp|http|https|s3|gs):\/\/|(data|arn):)[^ \"]+$"
       },
       "guid_pattern": {
         "$id": "#/definitions/patterns/guid_pattern",
@@ -116,6 +116,10 @@
       "dropin_name": {
         "$id": "#/definitions/patterns/dropin_name",
         "pattern": "(.conf)$"
+      },
+      "ssh_pub": {
+        "$id": "#/definitions/patterns/ssh_pub",
+        "pattern": "((.*)\\s)?((?:sk-)?(?:ssh|ecdsa)-[a-z0-9@.-]+)\\s([a-zA-Z0-9+/]+={0,2})(\\s(.*))?"
       }
     },
     "stringoptions": {
@@ -147,7 +151,7 @@
           "$ref": "#/definitions/patterns/source_pattern",
           "type": "string",
           "title": "source (string):",
-          "description": "The URL of the contents. Supported schemes are http, https, s3, gs, tftp, and data. Note: When using http, it is advisable to use the verification option to ensure the contents haven’t been modified. Mutually exclusive with inline and local."
+          "description": "The URL of the contents. Supported schemes are http, https, tftp, s3, arn, gs, and data. Note: When using http, it is advisable to use the verification option to ensure the contents haven’t been modified. Mutually exclusive with inline and local."
         },
         "http_headers": {
           "$ref": "#/definitions/http_headers"
@@ -331,7 +335,7 @@
                             "$ref": "#/definitions/patterns/source_pattern",
                             "type": "string",
                             "title": "source (string):",
-                            "description": "The URL of the certificate bundle (in PEM format). With Ignition ≥ 2.4.0, the bundle can contain multiple concatenated certificates. Supported schemes are http, https, s3, gs, tftp, and data. Note: When using http, it is advisable to use the verification option to ensure the contents haven’t been modified. Mutually exclusive with inline and local."
+                            "description": "The URL of the certificate bundle (in PEM format). With Ignition ≥ 2.4.0, the bundle can contain multiple concatenated certificates. Supported schemes are http, https, tftp, s3, arn, gs, and data. Note: When using http, it is advisable to use the verification option to ensure the contents haven't been modified. Mutually exclusive with inline and local."
                           },
                           "verification": {
                             "$ref": "#/definitions/verification"
@@ -653,7 +657,7 @@
                   "mode": {
                     "type": "integer",
                     "title": "mode (integer):",
-                    "description": "The file’s permission mode. If not specified, the permission mode for files defaults to 0644 or the existing file’s permissions if overwrite is false, contents is unspecified, and a file already exists at the path."
+                    "description": "The file's permission mode. Note that the mode must be properly specified as a decimal value (i.e. 0644 -> 420). Setuid/setgid/sticky bits are supported. If not specified, the permission mode for files defaults to 0644 or the existing file's permissions if overwrite is false, contents.source is unspecified, and a file already exists at the path."
                   },
                   "user": {
                     "$ref": "#/definitions/user"
@@ -692,7 +696,7 @@
                   "mode": {
                     "type": "integer",
                     "title": "mode (integer):",
-                    "description": "The directory’s permission mode. If not specified, the permission mode for directories defaults to 0755 or the mode of an existing directory if overwrite is false and a directory already exists at the path."
+                    "description": "The directory's permission mode. Note that the mode must be properly specified as a decimal value (i.e. 0755 -> 493). Setuid/setgid/sticky bits are supported. If not specified, the permission mode for directories defaults to 0755 or the mode of an existing directory if overwrite is false and a directory already exists at the path."
                   },
                   "user": {
                     "$ref": "#/definitions/user"
@@ -1017,7 +1021,7 @@
                     "items": {
                       "oneOf": [
                         {
-                          "pattern": "((.*)\\s)?((?:sk-)?(?:ssh|ecdsa)-[a-z0-9@.-]+)\\s([a-zA-Z0-9+/]+={0,2})(\\s(.*))?"
+                          "$ref": "#/definitions/patterns/ssh_pub"
                         }
                       ]
                     }
