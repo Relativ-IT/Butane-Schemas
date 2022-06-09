@@ -17,19 +17,15 @@ This is a Json Schema that can be used as a helper to write a [butane config fil
 
 - edit your settings.json file like :
 
+New with Version 1.8.0 of the [Red hat YAML extension](https://github.com/redhat-developer/vscode-yaml) and since this I've published this work on [JSON Schema Store](https://www.schemastore.org/json/) you just need to change your files associations :grinning:
+
 ```JSON
 "settings": {
-  "yaml.schemas": {
-      "https://raw.githubusercontent.com/Relativ-IT/Butane-Schemas/Release/Butane-Schema.json": ["*.bu"]
-  },
   "files.associations": {
-    "*.bu": "yaml",
-    "*.ign": "json"
+    "*.bu": "yaml"
   }
 }
 ```
-
-:bulb: Note that files associations are optional, they only set vs code to map file type to the one it knows
 
 ## Use it with Sublime text
 
