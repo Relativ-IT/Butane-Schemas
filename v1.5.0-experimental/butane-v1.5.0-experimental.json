@@ -1199,6 +1199,65 @@
           }
         }
       }
+    },
+    "extensions": {
+      "$id": "#/properties/extensions",
+      "type": "array",
+      "title": "extensions (list of objects):",
+      "description": "The list of additional packages to be installed.",
+      "additionalItems": false,
+      "uniqueItems": true,
+      "minItems": 1,
+      "items": {
+        "oneOf": [
+          {
+            "required": ["name"],
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "type": "string",
+                "title": "name (string):",
+                "description": "The name of the package."
+              }
+            }
+          }
+        ]
+      }
+    },
+    "grub": {
+      "$id": "#/properties/grub",
+      "type": "object",
+      "title": "grub (object):",
+      "description": "Describes the desired GRUB bootloader configuration.",
+      "additionalProperties": false,
+      "properties": {
+        "users": {
+          "type": "array",
+          "title": "users (list of objects):",
+          "description": "The list of GRUB superusers.",
+          "additionalItems": false,
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "oneOf": [
+              {
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "title": "name (string):",
+                    "description": "The user name."
+                  },
+                  "password_hash": {
+                    "type": "string",
+                    "title": "password_hash (boolean):",
+                    "description": "The PBKDF2 password hash."
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
     }
   }
 }

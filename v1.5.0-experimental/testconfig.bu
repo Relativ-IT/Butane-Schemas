@@ -215,3 +215,11 @@ boot_device:
     devices:
       - /dev/sda
       - /dev/sdb
+
+extensions:
+  - vim
+
+grub:
+  users:
+    - name: root
+      password_hash: grub.pbkdf2.sha512.10000.874A958E5264...
