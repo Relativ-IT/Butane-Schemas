@@ -656,7 +656,7 @@
                   "mode": {
                     "type": "integer",
                     "title": "mode (integer):",
-                    "description": "The file’s permission mode. If not specified, the permission mode for files defaults to 0644 or the existing file’s permissions if overwrite is false, contents is unspecified, and a file already exists at the path."
+                    "description": "The file's permission mode. Setuid/setgid/sticky bits are not supported. If not specified, the permission mode for files defaults to 0644 or the existing file's permissions if `overwrite` is false, `contents` is unspecified, and a file already exists at the path."
                   },
                   "user": {
                     "$ref": "#/definitions/user"
@@ -695,7 +695,7 @@
                   "mode": {
                     "type": "integer",
                     "title": "mode (integer):",
-                    "description": "The directory’s permission mode. If not specified, the permission mode for directories defaults to 0755 or the mode of an existing directory if overwrite is false and a directory already exists at the path."
+                    "description": "The directory's permission mode. Setuid/setgid/sticky bits are not supported. If not specified, the permission mode for directories defaults to 0755 or the mode of an existing directory if `overwrite` is false and a directory already exists at the path."
                   },
                   "user": {
                     "$ref": "#/definitions/user"
