@@ -1249,7 +1249,7 @@
                   },
                   "password_hash": {
                     "type": "string",
-                    "title": "password_hash (boolean):",
+                    "title": "password_hash (string):",
                     "description": "The PBKDF2 password hash."
                   }
                 }
