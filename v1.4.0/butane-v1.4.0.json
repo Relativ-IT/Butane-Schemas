@@ -711,7 +711,7 @@
         "links": {
           "type": "array",
           "title": "links (list of objects):",
-          "description": "The list of links to be created. Every file, directory, and link must have a unique path. ",
+          "description": "The list of links to be created. Every file, directory, and link must have a unique path.",
           "additionalItems": false,
           "uniqueItems": true,
           "minItems": 1,
@@ -724,7 +724,7 @@
                   "path": {
                     "type": "string",
                     "title": "path (string):",
-                    "description": "The absolute path to the link"
+                    "description": "The absolute path to the link."
                   },
                   "overwrite": {
                     "type": "boolean",
@@ -733,11 +733,11 @@
                   },
                   "user": {
                     "$ref": "#/definitions/user",
-                    "description": "Specifies the owner for a symbolic link. Ignored for hard links. "
+                    "description": "Specifies the owner for a symbolic link. Ignored for hard links."
                   },
                   "group": {
                     "$ref": "#/definitions/group",
-                    "description": "Specifies the group for a symbolic link. Ignored for hard links. "
+                    "description": "Specifies the group for a symbolic link. Ignored for hard links."
                   },
                   "target": {
                     "type": "string",

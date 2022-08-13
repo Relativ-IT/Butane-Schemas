@@ -725,7 +725,7 @@
                   "path": {
                     "type": "string",
                     "title": "path (string):",
-                    "description": "The absolute path to the link"
+                    "description": "The absolute path to the link."
                   },
                   "overwrite": {
                     "type": "boolean",
@@ -734,11 +734,11 @@
                   },
                   "user": {
                     "$ref": "#/definitions/user",
-                    "description": "Specifies the owner for a symbolic link. Ignored for hard links. "
+                    "description": "Specifies the owner for a symbolic link. Ignored for hard links."
                   },
                   "group": {
                     "$ref": "#/definitions/group",
-                    "description": "Specifies the group for a symbolic link. Ignored for hard links. "
+                    "description": "Specifies the group for a symbolic link. Ignored for hard links."
                   },
                   "target": {
                     "type": "string",
