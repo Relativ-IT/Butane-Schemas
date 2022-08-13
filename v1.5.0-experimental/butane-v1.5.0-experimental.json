@@ -712,7 +712,7 @@
         "links": {
           "type": "array",
           "title": "links (list of objects):",
-          "description": "The list of filesystems to be configured. device and format need to be specified. Every filesystem must have a unique device.",
+          "description": "The list of links to be created. Every file, directory, and link must have a unique path. ",
           "additionalItems": false,
           "uniqueItems": true,
           "minItems": 1,
@@ -725,23 +725,20 @@
                   "path": {
                     "type": "string",
                     "title": "path (string):",
-                    "description": "The absolute path to the directory."
+                    "description": "The absolute path to the link"
                   },
                   "overwrite": {
                     "type": "boolean",
                     "title": "overwrite (boolean):",
-                    "description": "Whether to delete preexisting nodes at the path. contents must be specified if overwrite is true. Defaults to false."
-                  },
-                  "mode": {
-                    "type": "integer",
-                    "title": "mode (integer):",
-                    "description": "The directory’s permission mode. If not specified, the permission mode for directories defaults to 0755 or the mode of an existing directory if overwrite is false and a directory already exists at the path."
+                    "description": "Whether to delete preexisting nodes at the path. If overwrite is false and a matching link exists at the path, Ignition will only set the owner and group. Defaults to false."
                   },
                   "user": {
-                    "$ref": "#/definitions/user"
+                    "$ref": "#/definitions/user",
+                    "description": "Specifies the owner for a symbolic link. Ignored for hard links. "
                   },
                   "group": {
-                    "$ref": "#/definitions/group"
+                    "$ref": "#/definitions/group",
+                    "description": "Specifies the group for a symbolic link. Ignored for hard links. "
                   },
                   "target": {
                     "type": "string",
