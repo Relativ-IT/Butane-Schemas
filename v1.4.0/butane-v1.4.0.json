@@ -636,12 +636,12 @@
                   "contents": {
                     "$ref": "#/definitions/contents",
                     "title": "contents (object):",
-                    "description": "options related to the contents of the file."
+                    "description": "Options related to the contents of the file."
                   },
                   "append": {
                     "type": "array",
                     "title": "append (object):",
-                    "description": "list of contents to be appended to the file. Follows the same stucture as contents",
+                    "description": "List of contents to be appended to the file. Follows the same stucture as contents",
                     "additionalItems": false,
                     "uniqueItems": true,
                     "minItems": 1,
