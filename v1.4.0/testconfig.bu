@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=./butane-v1.4.0.json
+# yaml-language-server: $schema=../Butane-Schema-dev.json
 variant: fcos
 version: 1.4.0
 
