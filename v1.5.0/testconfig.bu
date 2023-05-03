@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=./butane-v1.5.0-experimental.json
+# yaml-language-server: $schema=../Butane-Schema-dev.json
 variant: fcos
 version: 1.5.0
 
@@ -135,6 +135,7 @@ storage:
       device: /dev/sdb
       key_file:
         inline: REPLACE-THIS-WITH-YOUR-KEY-MATERIAL
+      discard: false
     - name: tpm-example
       device: /dev/sdc
       clevis:
@@ -145,6 +146,8 @@ storage:
         tang:
           - url: https://tang.example.com
             thumbprint: REPLACE-THIS-WITH-YOUR-TANG-THUMBPRINT
+            advertisement: now you know jhon snow !
+      discard: true
 
   trees:
     - local: v1_5
@@ -182,23 +185,36 @@ systemd:
         contents: some string
       contents: |
         [Unit]
-        Description=Prometheus node exporter
+        Description=Podman promtail.service
+        Documentation=man:podman-generate-systemd(1)
+        Wants=network.target pod-monitor.service
         After=network-online.target
-        Wants=network-online.target
+        RequiresMountsFor=/run/mount/configs
 
         [Service]
         Environment=PODMAN_SYSTEMD_UNIT=%n
-        #ExecStartPre=/usr/bin/podman pull quay.io/prometheus/node-exporter:latest
-        ExecStart=/usr/bin/podman run --label="io.containers.autoupdate=image" --detach --replace --name=%N --privileged --network=host --pid=host -v /run/dbus/system_bus_socket:/var/run/dbus/system_bus_socket:ro -v /:/host:ro,rslave quay.io/prometheus/node-exporter:latest --path.rootfs=/host --collector.systemd
-        ExecStop=/usr/bin/podman stop %N
+        Restart=on-failure
         Type=forking
+        KillMode=none
+        ExecStart=/usr/bin/podman run \
+          --label="io.containers.autoupdate=registry" \
+          --detach \
+          --log-driver=journald \
+          --replace \
+          --name=%N \
+          --privileged \
+          -p 9080:9080 \
+          -v /etc/machine-id:/etc/machine-id:ro \
+          -v /run/mount/configs/loki/promtail.yaml:/mnt/config/promtail.yaml:ro \
+          -v /run/log/journal:/run/log/journal:ro \
+          -v promtail-data:/tmp \
+          docker.io/grafana/promtail:latest \
+          -config.file=/mnt/config/promtail.yaml
+        ExecStop=/usr/bin/podman stop %N
 
         [Install]
-        WantedBy=multi-user.target
-      scope: user
-      users:
-        - core
-        - root
+        WantedBy=multi-user.target default.target
+      contents_local: /opt/local/content
 
 kernel_arguments:
   should_exist:
@@ -211,13 +227,15 @@ boot_device:
   luks:
     tpm2: true
     threshold: 0
+    tang:
+      - url: http://url.com
+        advertisement: be carefull
+        thumbprint: thisisathumbprint
+
   mirror:
     devices:
       - /dev/sda
       - /dev/sdb
-
-extensions:
-  - vim
 
 grub:
   users:

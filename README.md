@@ -13,7 +13,7 @@ This is a Json Schema that can be used as a helper to write a [butane config fil
 - Associate a schema in the YAML file `# yaml-language-server: $schema=<urlToTheSchema>` : [doc](https://github.com/redhat-developer/vscode-yaml#associating-a-schema-to-a-glob-pattern-via-yamlschemas)
   - For butane schema, use `# yaml-language-server: $schema=https://raw.githubusercontent.com/Relativ-IT/Butane-Schemas/Release/Butane-Schema.json"`
 
-### How to setup vs code to associate a schema to your *.bu files whitout setting schema manually
+## Setup vs code to associate a schema to your *.bu files whitout setting schema manually
 
 - edit your settings.json file like :
 

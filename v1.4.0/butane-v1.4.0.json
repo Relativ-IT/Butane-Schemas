@@ -4,54 +4,45 @@
   "type": "object",
   "title": "Fedora Coreos Butane Schema",
   "description": "Schema to validate v1.4.0 specifications",
-  "$comment": "Copyright [2022] [Emeric Chassagne]\n\nLicensed under the Apache License, Version 2.0 (the \"License\");\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at\n\nhttp://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and\nlimitations under the License.",
+  "$comment": "Copyright [2023] [Emeric Chassagne]\n\nLicensed under the Apache License, Version 2.0 (the \"License\");\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at\n\nhttp://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and\nlimitations under the License.",
   "additionalProperties": false,
-  "required": ["variant","version"],
 
   "definitions": {
-    "config": {
-      "$id": "#/definitions/config",
-      "oneOf": [
-        {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "source": {
-              "$ref": "#/definitions/patterns/source_pattern",
-              "type": "string",
-              "title": "source (string):",
-              "description": "The URL of the config. Supported schemes are http, https, s3, gs, tftp, and data. Note: When using http, it is advisable to use the verification option to ensure the contents haven’t been modified. Mutually exclusive with inline and local."
-            },
-            "http_headers": {
-              "$ref": "#/definitions/http_headers"
-            },
-            "verification": {
-              "$ref": "#/definitions/verification",
-              "description": "Options related to the verification of the config."
-            }
-          }
+    "contents": {
+      "$id": "#/definitions/contents",
+      "type": "object",
+      "additionalItems": false,
+      "properties": {
+        "compression": {
+          "type": "string",
+          "title": "compression (string):",
+          "description": "The type of compression used on the file (null or gzip). Compression cannot be used with S3.",
+          "enum": ["null","gzip"]
         },
-        {
-          "additionalProperties": false,
-          "properties": {
-            "inline": {
-              "type": "string",
-              "title": "inline (string):",
-              "description": "The contents of the config. Mutually exclusive with source and local."
-            }
-          }
+        "source": {
+          "$ref": "#/definitions/patterns/source_pattern",
+          "type": "string",
+          "title": "source (string):",
+          "description": "The URL of the file. Supported schemes are `http`, `https`, `tftp`, `s3`, `gs`, and `data`( https://tools.ietf.org/html/rfc2397 ). When using `http`, it is advisable to use the verification option to ensure the contents haven't been modified. If source is omitted and a regular file already exists at the path, Ignition will do nothing. If source is omitted and no file exists, an empty file will be created. Mutually exclusive with `inline` and `local`."
         },
-        {
-          "additionalProperties": false,
-          "properties": {
-            "local": {
-              "type": "string",
-              "title": "local (string):",
-              "description": "A local path to the contents of the config, relative to the directory specified by the --files-dir command-line argument. Mutually exclusive with source and inline."
-            }
-          }
+        "http_headers": {
+          "$ref": "#/definitions/http_headers"
+        },
+        "verification": {
+          "$ref": "#/definitions/verification",
+          "description": "Options related to the verification of the contents."
+        },
+        "inline": {
+          "type": "string",
+          "title": "inline (string):",
+          "description": "The contents. Mutually exclusive with source and local."
+        },
+        "local": {
+          "type": "string",
+          "title": "local (string):",
+          "description": "A local path to the contents, relative to the directory specified by the --files-dir command-line argument. Mutually exclusive with source and inline."
         }
-      ]
+      }
     },
     "verification": {
       "$id": "#/definitions/verification",
@@ -65,7 +56,7 @@
           "$id": "#/definitions/verification/hash",
           "type": "string",
           "title": "hash (string):",
-          "description": "The hash in the form type-value where type is either sha512 or sha256.",
+          "description": "The hash of the file, in the form `<type>-<value>` where type is either `sha512` or `sha256`. If `compression` is specified, the hash describes the decompressed file.",
           "pattern": "^(sha256-|sha512-)\\S+$"
         }
       }
@@ -133,42 +124,6 @@
             "type": "string"
           }
         ]
-      }
-    },
-    "contents": {
-      "$id": "#/definitions/contents",
-      "type": "object",
-      "additionalItems": false,
-      "properties": {
-        "compression": {
-          "type": "string",
-          "title": "compression (string):",
-          "description": "The type of compression used on the contents (null or gzip). Compression cannot be used with S3.",
-          "enum": ["null","gzip"]
-        },
-        "source": {
-          "$ref": "#/definitions/patterns/source_pattern",
-          "type": "string",
-          "title": "source (string):",
-          "description": "The URL of the contents. Supported schemes are http, https, s3, gs, tftp, and data. Note: When using http, it is advisable to use the verification option to ensure the contents haven’t been modified. Mutually exclusive with inline and local."
-        },
-        "http_headers": {
-          "$ref": "#/definitions/http_headers"
-        },
-        "verification": {
-          "$ref": "#/definitions/verification",
-          "description": "Options related to the verification of the contents."
-        },
-        "inline": {
-          "type": "string",
-          "title": "inline (string):",
-          "description": "The contents. Mutually exclusive with source and local."
-        },
-        "local": {
-          "type": "string",
-          "title": "local (string):",
-          "description": "A local path to the contents, relative to the directory specified by the --files-dir command-line argument. Mutually exclusive with source and inline."
-        }
       }
     },
     "security_object": {
@@ -274,13 +229,13 @@
               "uniqueItems": true,
               "minItems": 1,
               "items": {
-                "$ref": "#/definitions/config"
+                "$ref": "#/definitions/contents"
               }
             },
             "replace": {
               "title": "replace (object):",
               "description": "The config that will replace the current.",
-              "$ref": "#/definitions/config"
+              "$ref": "#/definitions/contents"
             }
           }
         },
@@ -326,45 +281,7 @@
                   "uniqueItems": true,
                   "minItems": 1,
                   "items": {
-                    "oneOf": [
-                      {
-                        "additionalProperties": false,
-                        "properties": {
-                          "source": {
-                            "$ref": "#/definitions/patterns/source_pattern",
-                            "type": "string",
-                            "title": "source (string):",
-                            "description": "The URL of the certificate bundle (in PEM format). With Ignition ≥ 2.4.0, the bundle can contain multiple concatenated certificates. Supported schemes are http, https, s3, gs, tftp, and data. Note: When using http, it is advisable to use the verification option to ensure the contents haven’t been modified. Mutually exclusive with inline and local."
-                          },
-                          "verification": {
-                            "$ref": "#/definitions/verification"
-                          },
-                          "http_headers": {
-                            "$ref": "#/definitions/http_headers"
-                          }
-                        }
-                      },
-                      {
-                        "additionalProperties": false,
-                        "properties": {
-                          "inline": {
-                            "type": "string",
-                            "title": "inline (string):",
-                            "description": "The contents of the certificate bundle (in PEM format). With Ignition ≥ 2.4.0, the bundle can contain multiple concatenated certificates. Mutually exclusive with source and local."
-                          }
-                        }
-                      },
-                      {
-                        "additionalProperties": false,
-                        "properties": {
-                          "local": {
-                            "type": "string",
-                            "title": "local (string):",
-                            "description": "A local path to the contents of the certificate bundle (in PEM format), relative to the directory specified by the --files-dir command-line argument. With Ignition ≥ 2.4.0, the bundle can contain multiple concatenated certificates. Mutually exclusive with source and inline."
-                          }
-                        }
-                      }
-                    ]
+                    "$ref": "#/definitions/contents"
                   }
                 }
               }
@@ -466,7 +383,7 @@
                               "$ref": "#/definitions/patterns/guid_pattern",
                               "type": "string",
                               "title": "type_guid (string):",
-                              "description": "The GPT partition type GUID. If omitted, the default will be 0FC63DAF-8483-4772-8E79-3D69D8477DE4 (Linux filesystem data).",
+                              "description": "he GPT partition type GUID ( https://en.wikipedia.org/wiki/GUID_Partition_Table#Partition_type_GUIDs ). If omitted, the default will be 0FC63DAF-8483-4772-8E79-3D69D8477DE4 (Linux filesystem data).",
                               "default": "0FC63DAF-8483-4772-8E79-3D69D8477DE4"
                             },
                             "guid": {
@@ -641,7 +558,7 @@
                   "append": {
                     "type": "array",
                     "title": "append (object):",
-                    "description": "List of contents to be appended to the file. Follows the same stucture as contents",
+                    "description": "List of fragments to be appended to the file. Follows the same structure as `contents`.",
                     "additionalItems": false,
                     "uniqueItems": true,
                     "minItems": 1,
@@ -918,7 +835,7 @@
                   "mask": {
                     "type": "boolean",
                     "title": "enabled (boolean):",
-                    "description": "Whether or not the service shall be masked. When true, the service is masked by symlinking it to /dev/null."
+                    "description": "Whether or not the service shall be masked. When true, the service is masked by symlinking it to /dev/null. When false, the service is unmasked by deleting the symlink to `/dev/null` if it exists."
                   },
                   "contents": {
                     "type": "string",

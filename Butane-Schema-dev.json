@@ -4,6 +4,7 @@
   "title": "Fedora Coreos Butane Schema",
   "$comment": "Copyright [2023] [Emeric Chassagne]\n\nLicensed under the Apache License, Version 2.0 (the \"License\");\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at\n\nhttp://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and\nlimitations under the License.",
   "type": "object",
+  "required": ["variant", "version"],
 
   "properties": {
     "variant": {
@@ -33,7 +34,7 @@
           }
         },
         {
-          "$ref": "https://raw.githubusercontent.com/Relativ-IT/Butane-Schemas/Release/v1.4.0/butane-v1.4.0.json"
+          "$ref": "./v1.4.0/butane-v1.4.0.json"
         }
       ]
     },
@@ -47,7 +48,7 @@
           }
         },
         {
-          "$ref": "https://raw.githubusercontent.com/Relativ-IT/Butane-Schemas/Release/v1.5.0/butane-v1.5.0.json"
+          "$ref": "./v1.5.0/butane-v1.5.0.json"
         }
       ]
     }
