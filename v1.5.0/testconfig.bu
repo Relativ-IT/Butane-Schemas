@@ -150,7 +150,7 @@ storage:
       discard: true
 
   trees:
-    - local: v1_5
+    - local: v1.5.0
 
 passwd:
   users:
@@ -164,7 +164,7 @@ passwd:
         - sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAI yubikey 5 nfc
         - ssh-dss AAAAB3NzaC1kc3 oldkey@example.com
       password_hash: $y$j9T$aUmgEDoFIDPhGxEe2FUjc/$C5A...
-      home_dir: /home/user1#
+      home_dir: /home/user1
       no_create_home: true
       groups:
         - wheel
@@ -181,40 +181,29 @@ systemd:
     - name: exporter.service
       enabled: true
       dropins:
-      - name: dropin.conf
-        contents: some string
+        - name: dropin.conf
+          contents: some string
       contents: |
         [Unit]
-        Description=Podman promtail.service
-        Documentation=man:podman-generate-systemd(1)
-        Wants=network.target pod-monitor.service
+        Description=Prometheus node exporter
         After=network-online.target
-        RequiresMountsFor=/run/mount/configs
+        Wants=network-online.target
 
         [Service]
         Environment=PODMAN_SYSTEMD_UNIT=%n
-        Restart=on-failure
-        Type=forking
-        KillMode=none
-        ExecStart=/usr/bin/podman run \
-          --label="io.containers.autoupdate=registry" \
-          --detach \
-          --log-driver=journald \
-          --replace \
-          --name=%N \
-          --privileged \
-          -p 9080:9080 \
-          -v /etc/machine-id:/etc/machine-id:ro \
-          -v /run/mount/configs/loki/promtail.yaml:/mnt/config/promtail.yaml:ro \
-          -v /run/log/journal:/run/log/journal:ro \
-          -v promtail-data:/tmp \
-          docker.io/grafana/promtail:latest \
-          -config.file=/mnt/config/promtail.yaml
+        ExecStart=/usr/bin/podman run --label="io.containers.autoupdate=registry" --detach --replace --name=%N --privileged --network=host --pid=host -v /run/dbus/system_bus_socket:/var/run/dbus/system_bus_socket:ro -v /:/host:ro,rslave quay.io/prometheus/node-exporter:latest --path.rootfs=/host --collector.systemd
         ExecStop=/usr/bin/podman stop %N
+        Type=forking
 
         [Install]
-        WantedBy=multi-user.target default.target
-      contents_local: /opt/local/content
+        WantedBy=multi-user.target
+
+    - name: another-one.service
+      enabled: true
+      dropins:
+        - name: dropin.conf
+          contents_local: /opt/local/dropincontent
+      contents_local: /opt/local/unitcontent
 
 kernel_arguments:
   should_exist:
