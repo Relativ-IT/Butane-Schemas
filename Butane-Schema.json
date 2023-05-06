@@ -4,6 +4,7 @@
   "$comment": "Sources: https://github.com/Relativ-IT/Butane-Schemas/tree/Release",
   "title": "Fedora Coreos Butane Schema",
   "type": "object",
+  "required": ["variant", "version"],
 
   "properties": {
     "variant": {

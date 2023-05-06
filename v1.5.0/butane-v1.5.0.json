@@ -884,7 +884,7 @@
                             "contents": {
                               "type": "string",
                               "title": "contents (string):",
-                              "description": "The contents of the drop-in."
+                              "description": "The contents of the drop-in. Mutually exclusive with contents_local."
                             },
                             "contents_local": {
                               "type": "string",
