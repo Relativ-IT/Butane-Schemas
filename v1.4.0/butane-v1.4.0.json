@@ -111,7 +111,7 @@
           "pattern": "\\.(service|socket|device|mount|automount|swap|target|path|timer|snapshot|slice|scope)$"
         },
         "dropin_name": {
-          "$id": "#/definitions/patterns//patternProperties/dropin_name",
+          "$id": "#/definitions/patterns/patternProperties/dropin_name",
           "pattern": "(.conf)$"
         },
         "ssh_pub": {
