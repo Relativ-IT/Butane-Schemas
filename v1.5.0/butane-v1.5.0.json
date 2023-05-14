@@ -12,6 +12,11 @@
       "$id": "#/definitions/contents",
       "type": "object",
       "additionalItems": false,
+      "oneOf": [
+        { "required": ["source"] },
+        { "required": ["inline"] },
+        { "required": ["local"] }
+      ],
       "properties": {
         "compression": {
           "type": "string",
@@ -19,18 +24,18 @@
           "description": "The type of compression used on the file (null or gzip). Compression cannot be used with S3.",
           "enum": ["null","gzip"]
         },
-        "source": {
-          "$ref": "#/definitions/patterns/source_pattern",
-          "type": "string",
-          "title": "source (string):",
-          "description": "The URL of the file. Supported schemes are `http`, `https`, `tftp`, `s3`, `arn`, `gs`, and `data`( https://tools.ietf.org/html/rfc2397 ). When using `http`, it is advisable to use the verification option to ensure the contents haven't been modified. If source is omitted and a regular file already exists at the path, Ignition will do nothing. If source is omitted and no file exists, an empty file will be created. Mutually exclusive with `inline` and `local`."
-        },
         "http_headers": {
           "$ref": "#/definitions/http_headers"
         },
         "verification": {
           "$ref": "#/definitions/verification",
           "description": "Options related to the verification of the contents."
+        },
+        "source": {
+          "$ref": "#/definitions/patterns/source_pattern",
+          "type": "string",
+          "title": "source (string):",
+          "description": "The URL of the file. Supported schemes are `http`, `https`, `tftp`, `s3`, `arn`, `gs`, and `data`( https://tools.ietf.org/html/rfc2397 ). When using `http`, it is advisable to use the verification option to ensure the contents haven't been modified. If source is omitted and a regular file already exists at the path, Ignition will do nothing. If source is omitted and no file exists, an empty file will be created. Mutually exclusive with `inline` and `local`."
         },
         "inline": {
           "type": "string",
@@ -835,6 +840,10 @@
               {
                 "required": ["name"],
                 "additionalProperties": false,
+                "oneOf": [
+                  { "required": ["contents"] },
+                  { "required": ["contents_local"] }
+                ],
                 "properties": {
                   "name": {
                     "$ref": "#/definitions/patterns/service_name",
@@ -874,6 +883,10 @@
                         {
                           "required": ["name"],
                           "additionalProperties": false,
+                          "oneOf": [
+                            { "required": ["contents"] },
+                            { "required": ["contents_local"] }
+                          ],
                           "properties": {
                             "name": {
                               "$ref": "#/definitions/patterns/dropin_name",

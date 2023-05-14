@@ -12,6 +12,11 @@
       "$id": "#/definitions/contents",
       "type": "object",
       "additionalItems": false,
+      "oneOf": [
+        { "required": ["source"] },
+        { "required": ["inline"] },
+        { "required": ["local"] }
+      ],
       "properties": {
         "compression": {
           "type": "string",
