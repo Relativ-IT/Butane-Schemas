@@ -205,6 +205,16 @@ systemd:
           contents_local: /opt/local/dropincontent
       contents_local: /opt/local/unitcontent
 
+    - name: serial-getty@ttyS0.service
+      dropins:
+        - name: autologin-core.conf
+          contents: |
+            [Service]
+            # Override Execstart in main unit
+            ExecStart=
+            # Add new Execstart with `-` prefix to ignore failure`
+            ExecStart=-/usr/sbin/agetty --autologin core --noclear %I $TERM
+
 kernel_arguments:
   should_exist:
     - mitigations=off

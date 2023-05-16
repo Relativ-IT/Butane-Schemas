@@ -843,10 +843,10 @@
               {
                 "required": ["name"],
                 "additionalProperties": false,
-                "oneOf": [
-                  { "required": ["contents"] },
-                  { "required": ["contents_local"] }
-                ],
+                "dependencies": {
+                  "contents": { "not": { "required": ["contents_local"] } },
+                  "contents_local": { "not": { "required": ["contents"] } }
+                },
                 "properties": {
                   "name": {
                     "$ref": "#/definitions/patterns/patternProperties/service_name",
