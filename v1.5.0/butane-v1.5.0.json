@@ -349,7 +349,7 @@
                   "device": {
                     "type": "string",
                     "title": "device (string):",
-                    "description": "The absolute path to the device. Devices are typically referenced by the /dev/disk/by-* symlinks."
+                    "description": "The absolute path to the device. Devices are typically referenced by the /dev/disk/by-* symlinks. The boot disk can be referenced as `/dev/disk/by-id/coreos-boot-disk`."
                   },
                   "wipe_table": {
                     "type": "boolean",
