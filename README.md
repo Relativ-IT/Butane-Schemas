@@ -1,10 +1,12 @@
 # Butane-Schemas
 
-Butane Schemas that helps creating [Butane](https://coreos.github.io/butane/specs/) files for [Fedora Coreos](https://getfedora.org/fr/coreos?stream=stable)
+Butane Schemas that helps creating Butane files for [Fedora Coreos](https://fedoraproject.org/fr/coreos/)
 
 ## What is it ?
 
-This is a Json Schema that can be used as a helper to write a [butane config file](https://github.com/coreos/butane) according to [its specifications](https://github.com/coreos/butane/tree/main/docs)
+This is a Json Schema that can be used as a helper to write a [butane config file](https://docs.fedoraproject.org/en-US/fedora-coreos/producing-ign/#_configuration_process) according to [its specifications](https://coreos.github.io/butane/specs/)
+
+It's not really intended to be used as is, but within an IDE
 
 ## Use it with VsCode
 
