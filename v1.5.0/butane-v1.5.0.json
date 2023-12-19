@@ -963,15 +963,8 @@
                   },
                   "ssh_authorized_keys_local": {
                     "$ref": "#/definitions/string_options",
-                    "title": "ssh_authorized_keys (list of strings):",
-                    "description": "A list of local paths to SSH key files, relative to the directory specified by the --files-dir command-line argument, to be added as SSH key fragments at .ssh/authorized_keys.d/ignition in the user's home directory. All SSH keys must be unique. Each file may contain multiple SSH keys, one per line.",
-                    "items": {
-                      "oneOf": [
-                        {
-                          "$ref": "#/definitions/patterns/patternProperties/ssh_pub"
-                        }
-                      ]
-                    }
+                    "title": "ssh_authorized_keys_local (list of strings):",
+                    "description": "A list of local paths to SSH key files, relative to the directory specified by the --files-dir command-line argument, to be added as SSH key fragments at .ssh/authorized_keys.d/ignition in the user's home directory. All SSH keys must be unique. Each file may contain multiple SSH keys, one per line."
                   },
                   "uid": {
                     "type": "integer",
