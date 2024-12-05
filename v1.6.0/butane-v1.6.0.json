@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/Relativ-IT/Butane-Schemas/Release/v1.5.0/butane-v1.5.0.json#",
-  "$comment": "Sources: https://github.com/Relativ-IT/Butane-Schemas/tree/Release/v1.5.0",
+  "$id": "https://raw.githubusercontent.com/Relativ-IT/Butane-Schemas/Release/v1.6.0/butane-v1.6.0.json#",
+  "$comment": "Sources: https://github.com/Relativ-IT/Butane-Schemas/tree/Release/v1.6.0",
   "type": "object",
   "title": "Fedora Coreos Butane Schema",
-  "description": "Schema to validate v1.5.0 specifications",
+  "description": "Schema to validate v1.6.0 specifications",
   "additionalProperties": false,
 
   "definitions": {
@@ -219,7 +219,7 @@
   "properties": {
     "variant": {},
     "version": {
-      "description": "The semantic version of the spec for this document. This document is for version 1.5.0 and generates Ignition configs with version 3.4.0."
+      "description": "The semantic version of the spec for this document. This document is for version 1.6.0 and generates Ignition configs with version 3.5.0."
     },
     "ignition": {
       "$id": "#/properties/ignition",
@@ -788,6 +788,19 @@
                         }
                       }
                     }
+                  },
+                  "cex": {
+                    "type": "object",
+                    "title": "cex (object):",
+                    "description": "Describes the IBM Crypto Express (CEX) card configuration for the luks device.",
+                    "additionalProperties": false,
+                    "properties": {
+                      "enabled": {
+                        "type": "boolean",
+                        "title": "enabled (boolean):",
+                        "description": "Whether or not to enable cex compatibility for luks. If omitted, defaults to false."
+                      }
+                    }
                   }
                 }
               }
@@ -1100,8 +1113,8 @@
         "layout": {
           "type": "string",
           "title": "layout (string):",
-          "description": "The disk layout of the target OS image. Supported values are aarch64, ppc64le, and x86_64. Defaults to x86_64.",
-          "enum": ["aarch64","ppc64le","x86_64"],
+          "description": "The disk layout of the target OS image. Supported values are `aarch64`, `ppc64le`, `s390x-eckd`, `s390x-virt`, `s390x-zfcp`, and `x86_64`. Defaults to `x86_64`.",
+          "enum": ["aarch64","ppc64le","s390x-eckd","s390x-virt","s390x-zfcp","x86_64"],
           "default": "x86_64"
         },
         "luks": {
@@ -1111,6 +1124,11 @@
           "description": "Describes the clevis configuration for encrypting the root filesystem.",
           "additionalProperties": false,
           "properties": {
+            "device":{
+              "type": "string",
+              "title": "device (string):",
+              "description": "The whole-disk device (not partitions), referenced by their absolute path. Must start with /dev/dasd for s390x-eckd layout or /dev/sd for s390x-zfcp layouts."
+            },
             "tang":{
               "$ref": "#/definitions/tang"
             },
@@ -1128,6 +1146,19 @@
               "type": "boolean",
               "title": "discard (boolean):",
               "description": "Whether to issue discard commands to the underlying block device when blocks are freed. Enabling this improves performance and device longevity on SSDs and space utilization on thinly provisioned SAN devices, but leaks information about which disk blocks contain data. If omitted, it defaults to false."
+            },
+            "cex": {
+              "type": "object",
+              "title": "cex (object):",
+              "description": "Describes the IBM Crypto Express (CEX) card configuration for the luks device.",
+              "additionalProperties": false,
+              "properties": {
+                "enabled": {
+                  "type": "boolean",
+                  "title": "enabled (boolean):",
+                  "description": "Whether or not to enable cex compatibility for luks. If omitted, defaults to false."
+                }
+              }
             }
           }
         },

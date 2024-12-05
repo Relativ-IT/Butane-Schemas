@@ -1063,7 +1063,8 @@
           "type": "string",
           "title": "layout (string):",
           "description": "The disk layout of the target OS image. Supported values are aarch64, ppc64le, and x86_64. Defaults to x86_64.",
-          "enum": ["aarch64","ppc64le","x86_64"]
+          "enum": ["aarch64","ppc64le","x86_64"],
+          "default": "x86_64"
         },
         "luks": {
           "$id": "#/properties/boot_device/luks",

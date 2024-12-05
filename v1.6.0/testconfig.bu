@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=../Butane-Schema-dev.json
 variant: fcos
-version: 1.5.0
+version: 1.6.0
 
 ignition:
   config:
@@ -140,6 +140,8 @@ storage:
       device: /dev/sdc
       clevis:
         tpm2: true
+      cex:
+        enabled: false
     - name: tang-example
       device: /dev/sdd
       clevis:
@@ -227,9 +229,12 @@ kernel_arguments:
 boot_device:
   layout: x86_64
   luks:
+    device: /dev/dasd
+    discard: true
+    cex:
+      enabled: true
     tpm2: true
     threshold: 0
-    discard: false
     tang:
       - url: http://url.com
         advertisement: be carefull
