@@ -42,3 +42,10 @@ jobs:
           file: 'v1.5.0/testconfig.bu'
           schema: 'v1.5.0/butane-v1.5.0.json'
           mode: lax
+
+      - name: Validate butane v1.6 file using associated json schema
+        uses: cardinalby/schema-validator-action@v3
+        with:
+          file: 'v1.6.0/testconfig.bu'
+          schema: 'v1.6.0/butane-v1.6.0.json'
+          mode: lax
