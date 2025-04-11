@@ -24,41 +24,41 @@
       "title": "version (string):"
     }
   },
-	"allOf": [
-		{
-			"if": { 
-				"properties": {
-						"variant": {
-								"const": "flatcar"
-							}
-						}
+  "allOf": [
+    {
+      "if": { 
+        "properties": {
+            "variant": {
+                "const": "flatcar"
+              }
+            }
          },
-				"then": {
-					"properties": {
-							"version": {
-								"enum": ["1.1.0"],
-								"default": "1.1.0"
-							}
-					}
-				}
+        "then": {
+          "properties": {
+              "version": {
+                "enum": ["1.1.0"],
+                "default": "1.1.0"
+              }
+          }
+        }
       },
       {
-				"if": { 
-					"properties": { "variant": { "const": "fcos" } }
-				},
-				"then": {
-					"properties": {
-							"version": {
-								"enum": [
-										"1.4.0",
-										"1.5.0",
-										"1.6.0"
-								],
-								"default": "1.6.0"
-							}
-					}
-				}
-		}
+        "if": { 
+          "properties": { "variant": { "const": "fcos" } }
+        },
+        "then": {
+          "properties": {
+              "version": {
+                "enum": [
+                    "1.4.0",
+                    "1.5.0",
+                    "1.6.0"
+                ],
+                "default": "1.6.0"
+              }
+          }
+        }
+    }
   ],
   "oneOf": [
     {
