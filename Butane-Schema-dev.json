@@ -44,7 +44,11 @@
       },
       {
         "if": { 
-          "properties": { "variant": { "const": "fcos" } }
+          "properties": {
+            "variant": {
+              "const": "fcos"
+              }
+            }
         },
         "then": {
           "properties": {
