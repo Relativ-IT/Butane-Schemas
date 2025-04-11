@@ -12,14 +12,22 @@
       "type": "string",
       "title": "variant (string):",
       "description": "Used to differentiate configs for different operating systems. Must be fcos for this specification.",
-      "enum": ["fcos"],
+      "enum": [
+         "fcos",
+         "flatcar"
+      ],
       "default": "fcos"
     },
     "version": {
       "$id": "#/properties/version",
       "type": "string",
       "title": "version (string):",
-      "enum": ["1.4.0", "1.5.0", "1.6.0"],
+      "enum": [
+         "1.1.0",
+         "1.4.0",
+         "1.5.0",
+         "1.6.0"
+      ],
       "default": "1.6.0"
     }
   },
@@ -64,6 +72,23 @@
         {
           "$ref": "./v1.6.0/butane-v1.6.0.json"
         }
+      ]
+    },
+    {
+      "allOf": [
+         {
+            "properties": {
+               "variant": {
+                  "const": "flatcar"
+               },
+               "version": {
+                  "const": "1.1.0"
+               }
+            }
+         },
+         {
+            "$ref": "./flatcar-v1.1.0/butane-flatcar-v1.1.0.json"
+         }
       ]
     }
   ]
