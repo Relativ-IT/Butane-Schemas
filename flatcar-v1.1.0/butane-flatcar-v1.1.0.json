@@ -3,8 +3,8 @@
   "$id": "https://raw.githubusercontent.com/Relativ-IT/Butane-Schemas/Release/flatcar-v1.1.0/butane-flatcar-v1.1.0.json#",
   "$comment": "Sources: https://github.com/Relativ-IT/Butane-Schemas/tree/Release/flatcar-v1.1.0",
   "type": "object",
-  "title": "Fedora Coreos Butane Schema",
-  "description": "Schema to validate v1.6.0 specifications",
+  "title": "Flatcar Linux Butane Schema",
+  "description": "Schema to validate v1.1.0 specifications",
   "additionalProperties": false,
   
   "definitions": {
@@ -219,7 +219,7 @@
   "properties": {
     "variant": {},
     "version": {
-      "description": "The semantic version of the spec for this document. This document is for version 1.6.0 and generates Ignition configs with version 3.5.0."
+      "description": "The semantic version of the spec for this document. This document is for version 1.1.0 and generates Ignition configs with version 3.4.0."
     },
     "ignition": {
       "$id": "#/properties/ignition",
