@@ -69,6 +69,9 @@
       "allOf": [
         {
           "properties": {
+            "variant": {
+              "const": "fcos"
+            },
             "version": {
               "const": "1.4.0"
             }
@@ -83,6 +86,9 @@
       "allOf": [
         {
           "properties": {
+            "variant": {
+              "const": "fcos"
+            },
             "version": {
               "const": "1.5.0"
             }
@@ -97,6 +103,9 @@
       "allOf": [
         {
           "properties": {
+            "variant": {
+              "const": "fcos"
+            },
             "version": {
               "const": "1.6.0"
             }
