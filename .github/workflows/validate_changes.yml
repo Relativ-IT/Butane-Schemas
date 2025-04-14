@@ -30,17 +30,16 @@ jobs:
           file: '**.json|**/*.json'
           fileParser: json
           
-      - name: Validate butane files
+      - name: Validate butane files using associated json schema
         uses: cardinalby/schema-validator-action@v3
         with:
           file: '**/*.bu'
           fileParser: yaml
-          schema: './Butane-Schema-main.json'
+          schema: './Butane-Schema.json'
           mode: default
-          # refSchemasMap: |
-          #   '[{"./v1.4.0/butane-v1.4.0.json": "./v1.4.0/butane-v1.4.0.json"},
-          #   {"./v1.5.0/butane-v1.5.0.json": "./v1.5.0/butane-v1.5.0.json"},
-          #   {"./v1.6.0/butane-v1.6.0.json": "./v1.6.0/butane-v1.6.0.json"}]'
-
+          refSchemasArray: |
+            ["./v1.4.0/butane-v1.4.0.json",
+            "./v1.5.0/butane-v1.5.0.json",
+            "./v1.6.0/butane-v1.6.0.json"]
 
 # "./flatcar-v1.1.0/butane-flatcar-v1.1.0.json"]
