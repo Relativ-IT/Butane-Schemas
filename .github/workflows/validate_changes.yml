@@ -28,10 +28,12 @@ jobs:
         uses: cardinalby/schema-validator-action@v3
         with:
           file: '**.json|**/*.json'
+          fileParser: json
           
       - name: Validate butane files using associated json schema
         uses: cardinalby/schema-validator-action@v3
         with:
           file: '**/*.bu'
+          fileParser: yaml
           schema: './Butane-Schema-actions.json'
           mode: default
