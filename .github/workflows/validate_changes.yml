@@ -33,5 +33,5 @@ jobs:
         uses: cardinalby/schema-validator-action@v3
         with:
           file: '**/*.bu'
-          schema: '../Butane-Schema-dev.json'
+          schema: './Butane-Schema-actions.json'
           mode: default
