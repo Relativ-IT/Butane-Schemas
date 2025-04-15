@@ -70,7 +70,7 @@
               }
             },
             {
-              "$ref": "./v1.4.0/butane-v1.4.0.json"
+              "$ref": "https://raw.githubusercontent.com/Relativ-IT/Butane-Schemas/Release/v1.4.0/butane-v1.4.0.json"
             }
           ]
         },
@@ -87,7 +87,7 @@
               }
             },
             {
-              "$ref": "./v1.5.0/butane-v1.5.0.json"
+              "$ref": "https://raw.githubusercontent.com/Relativ-IT/Butane-Schemas/Release/v1.5.0/butane-v1.5.0.json"
             }
           ]
         },
@@ -104,7 +104,7 @@
               }
             },
             {
-              "$ref": "./v1.6.0/butane-v1.6.0.json"
+              "$ref": "https://raw.githubusercontent.com/Relativ-IT/Butane-Schemas/Release/v1.6.0/butane-v1.6.0.json"
             }
           ]
         },
@@ -121,7 +121,7 @@
                 }
             },
             {
-                "$ref": "./flatcar-v1.1.0/butane-flatcar-v1.1.0.json"
+                "$ref": "https://raw.githubusercontent.com/Relativ-IT/Butane-Schemas/Release/flatcar-v1.1.0/butane-flatcar-v1.1.0.json"
             }
           ]
         }
