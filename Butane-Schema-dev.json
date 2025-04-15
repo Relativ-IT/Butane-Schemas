@@ -11,7 +11,7 @@
       "$id": "#/properties/variant",
       "type": "string",
       "title": "variant (string):",
-      "description": "Used to differentiate configs for different operating systems. Must be fcos for this specification.",
+      "description": "Used to differentiate configs for different operating systems.",
       "enum": [
          "fcos",
          "flatcar"
@@ -26,111 +26,105 @@
   },
   "allOf": [
     {
-      "if": { 
-        "properties": {
-            "variant": {
-                "const": "flatcar"
-              }
-            }
-         },
-        "then": {
-          "properties": {
-              "version": {
-                "enum": ["1.1.0"],
-                "default": "1.1.0"
-              }
-          }
-        }
-      },
-      {
-        "if": { 
-          "properties": {
-            "variant": {
-              "const": "fcos"
-              }
-            }
-        },
-        "then": {
-          "properties": {
-              "version": {
-                "enum": [
-                    "1.4.0",
-                    "1.5.0",
-                    "1.6.0"
-                ],
-                "default": "1.6.0"
-              }
-          }
-        }
-    }
-  ],
-  "oneOf": [
-    {
-      "allOf": [
+      "oneOf": [
         {
           "properties": {
             "variant": {
               "const": "fcos"
             },
             "version": {
-              "const": "1.4.0"
+              "enum": [
+                "1.4.0",
+                "1.5.0",
+                "1.6.0"
+              ],
+              "default": "1.6.0"
             }
           }
         },
-        {
-          "$ref": "./v1.4.0/butane-v1.4.0.json"
-        }
-      ]
-    },
-    {
-      "allOf": [
         {
           "properties": {
             "variant": {
-              "const": "fcos"
+              "const": "flatcar"
             },
             "version": {
-              "const": "1.5.0"
+              "enum": ["1.1.0"],
+              "default": "1.1.0"
             }
           }
-        },
-        {
-          "$ref": "./v1.5.0/butane-v1.5.0.json"
         }
       ]
     },
     {
-      "allOf": [
+      "oneOf": [
         {
-          "properties": {
-            "variant": {
-              "const": "fcos"
+          "allOf": [
+            {
+              "properties": {
+                "variant": {
+                  "const": "fcos"
+                },
+                "version": {
+                  "const": "1.4.0"
+                }
+              }
             },
-            "version": {
-              "const": "1.6.0"
+            {
+              "$ref": "./v1.4.0/butane-v1.4.0.json"
             }
-          }
+          ]
         },
         {
-          "$ref": "./v1.6.0/butane-v1.6.0.json"
-        }
-      ]
-    },
-    {
-      "allOf": [
-         {
-            "properties": {
-               "variant": {
-                  "const": "flatcar"
-               },
-               "version": {
-                  "const": "1.1.0"
-               }
+          "allOf": [
+            {
+              "properties": {
+                "variant": {
+                  "const": "fcos"
+                },
+                "version": {
+                  "const": "1.5.0"
+                }
+              }
+            },
+            {
+              "$ref": "./v1.5.0/butane-v1.5.0.json"
             }
-         },
-         {
-            "$ref": "./flatcar-v1.1.0/butane-flatcar-v1.1.0.json"
-         }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "properties": {
+                "variant": {
+                  "const": "fcos"
+                },
+                "version": {
+                  "const": "1.6.0"
+                }
+              }
+            },
+            {
+              "$ref": "./v1.6.0/butane-v1.6.0.json"
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+                "properties": {
+                  "variant": {
+                      "const": "flatcar"
+                  },
+                  "version": {
+                      "const": "1.1.0"
+                  }
+                }
+            },
+            {
+                "$ref": "./flatcar-v1.1.0/butane-flatcar-v1.1.0.json"
+            }
+          ]
+        }
       ]
     }
   ]
