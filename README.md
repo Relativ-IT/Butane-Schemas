@@ -1,6 +1,6 @@
 # Butane-Schemas
 
-Butane Schemas that helps creating Butane files for [Fedora Coreos](https://fedoraproject.org/fr/coreos/)
+Butane Schemas that helps creating Butane files for [Fedora Coreos](https://fedoraproject.org/fr/coreos/) and [Flatcar Linux](https://www.flatcar.org)
 
 This json Schema that can be used as a helper to write a [butane config file](https://docs.fedoraproject.org/en-US/fedora-coreos/producing-ign/#_configuration_process) according to [its specifications](https://coreos.github.io/butane/specs/)
 
