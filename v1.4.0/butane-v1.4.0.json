@@ -496,7 +496,6 @@
                   },
                   "uuid": {
                     "$ref": "#/definitions/patterns/patternProperties/guid_pattern",
-                    "format": "uuid",
                     "title": "uuid (string):",
                     "description": "The uuid of the filesystem."
                   },
