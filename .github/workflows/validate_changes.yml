@@ -36,7 +36,7 @@ jobs:
           file: '**/*.bu'
           fileParser: yaml
           schema: './Butane-Schema.json'
-          mode: default
+          mode: spec
           refSchemasArray: |
             ["./v1.4.0/butane-v1.4.0.json",
             "./v1.5.0/butane-v1.5.0.json",

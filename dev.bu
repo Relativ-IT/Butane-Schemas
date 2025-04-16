@@ -1,0 +1,4 @@
+# yaml-language-server: $schema=./Butane-Schema-dev.json
+variant: fcos
+version: 1.6.0
+
