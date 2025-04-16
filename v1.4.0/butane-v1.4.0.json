@@ -32,7 +32,6 @@
         },
         "source": {
           "$ref": "#/definitions/patterns/patternProperties/source_pattern",
-          "type": "string",
           "title": "source (string):",
           "description": "The URL of the file. Supported schemes are `http`, `https`, `tftp`, `s3`, `gs`, and `data`( https://tools.ietf.org/html/rfc2397 ). When using `http`, it is advisable to use the verification option to ensure the contents haven't been modified. If source is omitted and a regular file already exists at the path, Ignition will do nothing. If source is omitted and no file exists, an empty file will be created. Mutually exclusive with `inline` and `local`."
         },
@@ -380,14 +379,12 @@
                             },
                             "type_guid": {
                               "$ref": "#/definitions/patterns/patternProperties/guid_pattern",
-                              "type": "string",
                               "title": "type_guid (string):",
                               "description": "he GPT partition type GUID ( https://en.wikipedia.org/wiki/GUID_Partition_Table#Partition_type_GUIDs ). If omitted, the default will be 0FC63DAF-8483-4772-8E79-3D69D8477DE4 (Linux filesystem data).",
                               "default": "0FC63DAF-8483-4772-8E79-3D69D8477DE4"
                             },
                             "guid": {
                               "$ref": "#/definitions/patterns/patternProperties/guid_pattern",
-                              "type": "string",
                               "title": "guid (string):",
                               "description": "The GPT unique partition GUID."
                             },
@@ -500,7 +497,6 @@
                   "uuid": {
                     "$ref": "#/definitions/patterns/patternProperties/guid_pattern",
                     "format": "uuid",
-                    "type": "string",
                     "title": "uuid (string):",
                     "description": "The uuid of the filesystem."
                   },
@@ -699,7 +695,6 @@
                   },
                   "uuid": {
                     "$ref": "#/definitions/patterns/patternProperties/guid_pattern",
-                    "type": "string",
                     "title": "uuid (string):",
                     "description": "The uuid of the luks device."
                   },
@@ -813,7 +808,6 @@
                 "properties": {
                   "name": {
                     "$ref": "#/definitions/patterns/patternProperties/service_name",
-                    "type": "string",
                     "title": "name (string):",
                     "description": "The name of the unit. This must be suffixed with a valid unit type (e.g. “thing.service”)."
                   },
@@ -846,7 +840,6 @@
                           "properties": {
                             "name": {
                               "$ref": "#/definitions/patterns/patternProperties/dropin_name",
-                              "type": "string",
                               "title": "name (string):",
                               "description": "The name of the drop-in. This must be suffixed with '.conf'."
                             },

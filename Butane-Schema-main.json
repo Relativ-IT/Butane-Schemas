@@ -6,7 +6,7 @@
   "type": "object",
   "required": ["variant", "version"],
 
- "properties": {
+  "properties": {
     "variant": {
       "$id": "#/properties/variant",
       "type": "string",
