@@ -11,7 +11,6 @@
     "contents": {
       "$id": "#/definitions/contents",
       "type": "object",
-      "additionalItems": false,
       "oneOf": [
         { "required": ["source"] },
         { "required": ["inline"] },
@@ -33,7 +32,6 @@
         },
         "source": {
           "$ref": "#/definitions/patterns/patternProperties/source_pattern",
-          "type": "string",
           "title": "source (string):",
           "description": "The URL of the file. Supported schemes are `http`, `https`, `tftp`, `s3`, `arn`, `gs`, and `data`( https://tools.ietf.org/html/rfc2397 ). When using `http`, it is advisable to use the verification option to ensure the contents haven't been modified. If source is omitted and a regular file already exists at the path, Ignition will do nothing. If source is omitted and no file exists, an empty file will be created. Mutually exclusive with `inline` and `local`."
         },
@@ -71,7 +69,6 @@
       "type": "array",
       "title": "http_headers (list of objects):",
       "description": "A list of HTTP headers to be added to the request. Available for http and https source schemes only.",
-      "additionalItems": false,
       "uniqueItems": true,
       "minItems": 1,
       "items": {
@@ -123,7 +120,6 @@
     "string_options": {
       "$id": "#/definitions/string_options",
       "type": "array",
-      "additionalItems": false,
       "uniqueItems": true,
       "minItems": 1,
       "items": {
@@ -137,7 +133,6 @@
     "security_object": {
       "$id": "#/definitions/security_object",
       "type": "object",
-      "additionalItems": false,
       "oneOf": [
         {"required": ["id"]},
         {"required": ["name"]}
@@ -186,7 +181,6 @@
       "type": "array",
       "title": "tang (list of objects):",
       "description": "Describes a tang server. Every server must have a unique url.",
-      "additionalItems": false,
       "uniqueItems": true,
       "minItems": 1,
       "items": {
@@ -238,7 +232,6 @@
               "type": "array",
               "title": "merge (list of objects):",
               "description": "A list of the configs to be merged to the current config.",
-              "additionalItems": false,
               "uniqueItems": true,
               "minItems": 1,
               "items": {
@@ -290,7 +283,6 @@
                   "type": "array",
                   "title": "certificate_authorities (list of objects):",
                   "description": "The list of additional certificate authorities (in addition to the system authorities) to be used for TLS verification when fetching over https. All certificate authorities must have a unique source, inline, or local.",
-                  "additionalItems": false,
                   "uniqueItems": true,
                   "minItems": 1,
                   "items": {
@@ -337,7 +329,6 @@
           "type": "array",
           "title": "disks (list of objects):",
           "description": "The list of disks to be configured and their options. Every entry must have a unique device.",
-          "additionalItems": false,
           "uniqueItems": true,
           "minItems": 1,
           "items": {
@@ -361,7 +352,6 @@
                     "type": "array",
                     "title": "partitions (list of objects):",
                     "description": "The list of partitions and their configuration for this particular disk. Every partition must have a unique number, or if 0 is specified, a unique label.",
-                    "additionalItems": false,
                     "uniqueItems": true,
                     "minItems": 1,
                     "items": {
@@ -394,14 +384,12 @@
                             },
                             "type_guid": {
                               "$ref": "#/definitions/patterns/patternProperties/guid_pattern",
-                              "type": "string",
                               "title": "type_guid (string):",
                               "description": "The GPT partition type GUID ( https://en.wikipedia.org/wiki/GUID_Partition_Table#Partition_type_GUIDs ). If omitted, the default will be 0FC63DAF-8483-4772-8E79-3D69D8477DE4 (Linux filesystem data).",
                               "default": "0FC63DAF-8483-4772-8E79-3D69D8477DE4"
                             },
                             "guid": {
                               "$ref": "#/definitions/patterns/patternProperties/guid_pattern",
-                              "type": "string",
                               "title": "guid (string):",
                               "description": "The GPT unique partition GUID."
                             },
@@ -434,7 +422,6 @@
           "type": "array",
           "title": "raid (list of objects):",
           "description": "The list of RAID arrays to be configured. Every RAID array must have a unique name.",
-          "additionalItems": false,
           "uniqueItems": true,
           "minItems": 1,
           "items": {
@@ -478,7 +465,6 @@
           "type": "array",
           "title": "filesystems (list of objects):",
           "description": "The list of filesystems to be configured. device and format need to be specified. Every filesystem must have a unique device.",
-          "additionalItems": false,
           "uniqueItems": true,
           "minItems": 1,
           "items": {
@@ -515,8 +501,6 @@
                   },
                   "uuid": {
                     "$ref": "#/definitions/patterns/patternProperties/guid_pattern",
-                    "format": "uuid",
-                    "type": "string",
                     "title": "uuid (string):",
                     "description": "The uuid of the filesystem."
                   },
@@ -544,7 +528,6 @@
           "type": "array",
           "title": "files (list of objects):",
           "description": "The list of files to be written. Every file, directory and link must have a unique path.",
-          "additionalItems": false,
           "uniqueItems": true,
           "minItems": 1,
           "items": {
@@ -572,7 +555,6 @@
                     "type": "array",
                     "title": "append (object):",
                     "description": "List of fragments to be appended to the file. Follows the same structure as `contents`.",
-                    "additionalItems": false,
                     "uniqueItems": true,
                     "minItems": 1,
                     "items": {
@@ -603,7 +585,6 @@
           "type": "array",
           "title": "directories (list of objects):",
           "description": "The list of directories to be created. Every file, directory, and link must have a unique path.",
-          "additionalItems": false,
           "uniqueItems": true,
           "minItems": 1,
           "items": {
@@ -642,7 +623,6 @@
           "type": "array",
           "title": "links (list of objects):",
           "description": "The list of links to be created. Every file, directory, and link must have a unique path.",
-          "additionalItems": false,
           "uniqueItems": true,
           "minItems": 1,
           "items": {
@@ -689,7 +669,6 @@
           "type": "array",
           "title": "luks (list of objects):",
           "description": "The list of files to be written. Every file, directory and link must have a unique path.",
-          "additionalItems": false,
           "uniqueItems": true,
           "minItems": 1,
           "items": {
@@ -720,7 +699,6 @@
                   },
                   "uuid": {
                     "$ref": "#/definitions/patterns/patternProperties/guid_pattern",
-                    "type": "string",
                     "title": "uuid (string):",
                     "description": "The uuid of the luks device."
                   },
@@ -753,7 +731,6 @@
           "type": "array",
           "title": "trees (list of objects):",
           "description": "A list of local directory trees to be embedded in the config. Ownership is not preserved. File modes are set to 0755 if the local file is executable or 0644 otherwise. Attributes of files, directories, and symlinks can be overridden by creating a corresponding entry in the files, directories, or links section; such files entries must omit contents and such links entries must omit target.",
-          "additionalItems": false,
           "uniqueItems": true,
           "minItems": 1,
           "items": {
@@ -790,7 +767,6 @@
           "type": "array",
           "title": "units (list of objects):",
           "description": "The list of systemd units. Every unit must have a unique name.",
-          "additionalItems": false,
           "uniqueItems": true,
           "minItems": 1,
           "items": {
@@ -805,7 +781,6 @@
                 "properties": {
                   "name": {
                     "$ref": "#/definitions/patterns/patternProperties/service_name",
-                    "type": "string",
                     "title": "name (string):",
                     "description": "The name of the unit. This must be suffixed with a valid unit type (e.g. “thing.service”)."
                   },
@@ -833,7 +808,6 @@
                     "type": "array",
                     "title": "dropins (list of objects):",
                     "description": "The list of drop-ins for the unit. Every drop-in must have a unique name.",
-                    "additionalItems": false,
                     "uniqueItems": true,
                     "minItems": 1,
                     "items": {
@@ -848,7 +822,6 @@
                           "properties": {
                             "name": {
                               "$ref": "#/definitions/patterns/patternProperties/dropin_name",
-                              "type": "string",
                               "title": "name (string):",
                               "description": "The name of the drop-in. This must be suffixed with '.conf'."
                             },
@@ -885,7 +858,6 @@
           "type": "array",
           "title": "users (list of objects):",
           "description": "The list of accounts that shall exist. All users must have a unique name.",
-          "additionalItems": false,
           "uniqueItems": true,
           "minItems": 1,
           "items": {
@@ -985,7 +957,6 @@
           "type": "array",
           "title": "groups (list of objects):",
           "description": "The list of groups to be added. All groups must have a unique name.",
-          "additionalItems": false,
           "uniqueItems": true,
           "minItems": 1,
           "items": {

@@ -380,7 +380,7 @@
                             "type_guid": {
                               "$ref": "#/definitions/patterns/patternProperties/guid_pattern",
                               "title": "type_guid (string):",
-                              "description": "he GPT partition type GUID ( https://en.wikipedia.org/wiki/GUID_Partition_Table#Partition_type_GUIDs ). If omitted, the default will be 0FC63DAF-8483-4772-8E79-3D69D8477DE4 (Linux filesystem data).",
+                              "description": "The GPT partition type GUID ( https://en.wikipedia.org/wiki/GUID_Partition_Table#Partition_type_GUIDs ). If omitted, the default will be 0FC63DAF-8483-4772-8E79-3D69D8477DE4 (Linux filesystem data).",
                               "default": "0FC63DAF-8483-4772-8E79-3D69D8477DE4"
                             },
                             "guid": {
