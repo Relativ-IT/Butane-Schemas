@@ -28,3 +28,7 @@ New with Version 1.8.0 of the [Red hat YAML extension](https://github.com/redhat
 ## Use it with Sublime text
 
 You can also use these butane schemas with Sublime text editor thanks to @jdoss via [sublime-butane](https://github.com/jdoss/sublime-butane)
+
+## List of clients that use uses the Red hat YAML extension
+
+[some known clients consuming Red hat YAML extension](https://github.com/redhat-developer/yaml-language-server?tab=readme-ov-file#clients)
