@@ -8,7 +8,7 @@ This json Schema that can be used as a helper to write a [butane config file](ht
 
 - Install [vs code](https://github.com/microsoft/vscode)
 - Install the [Red hat YAML extension](https://github.com/redhat-developer/vscode-yaml)
-- Associate a schema in the YAML file `# yaml-language-server: $schema=<urlToTheSchema>` : [doc](https://github.com/redhat-developer/vscode-yaml#associating-a-schema-to-a-glob-pattern-via-yamlschemas)
+- Associate a schema in the YAML file `# yaml-language-server: $schema=<urlToTheSchema>` : [doc](https://github.com/redhat-developer/vscode-yaml?tab=readme-ov-file#associating-a-schema-in-the-yaml-file)
   - For butane schema, use `# yaml-language-server: $schema=https://relativ-it.github.io/Butane-Schemas/Butane-Schema.json"`
 
 ## Setup vs code to associate a schema to your *.bu files whitout setting schema manually
