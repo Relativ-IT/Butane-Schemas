@@ -36,9 +36,10 @@
               "enum": [
                 "1.4.0",
                 "1.5.0",
-                "1.6.0"
+                "1.6.0",
+                "1.7.0"
               ],
-              "default": "1.6.0"
+              "default": "1.7.0"
             }
           }
         },
@@ -105,6 +106,23 @@
             },
             {
               "$ref": "https://relativ-it.github.io/Butane-Schemas/v1.6.0/butane-v1.6.0.json"
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "properties": {
+                "variant": {
+                  "const": "fcos"
+                },
+                "version": {
+                  "const": "1.7.0"
+                }
+              }
+            },
+            {
+              "$ref": "https://relativ-it.github.io/Butane-Schemas/v1.7.0/butane-v1.7.0.json"
             }
           ]
         },
