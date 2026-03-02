@@ -818,9 +818,11 @@
                     "description": "Custom permissions to apply to directories"
                   },
                   "user": {
+                    "description": "User owner of the tree",
                     "$ref": "#/definitions/user"
                   },
                   "group": {
+                    "description": "Group owner of the tree",
                     "$ref": "#/definitions/group"
                   }
                 }
